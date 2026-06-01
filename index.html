@@ -3,90 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroVitta | Do Campo à Mesa</title>
+    <title>Portal AgroVitta | Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Navegação Profissional -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">Agro<span>Vitta</span></a>
-            <ul class="nav-links">
-                <li><a href="#home">Início</a></li>
-                <li><a href="#jornada">Nossa Jornada</a></li>
-                <li><a href="#impacto">Impacto</a></li>
-                <li><a href="#contato" class="btn-nav">Fale Conosco</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Hero Section (Introdução Impactante) -->
-    <header id="home" class="hero">
-        <div class="hero-content">
-            <h1>Rastreabilidade e Sustentabilidade da Semente ao Prato</h1>
-            <p>Conectamos a tecnologia do campo à mesa do consumidor, garantindo alimentos puros, frescos e com propósito.</p>
-            <a href="#jornada" class="btn-primary">Conheça o Processo</a>
-        </div>
-    </header>
-
-    <!-- Seção Interativa: Linha do Tempo Corporativa -->
-    <section id="jornada" class="timeline-section">
-        <div class="section-header">
-            <h2>Nossa Cadeia de Valor</h2>
-            <p>Clique em cada etapa para auditar os nossos processos de qualidade.</p>
-        </div>
-
-        <div class="timeline">
-            <!-- Etapa 1 -->
-            <div class="timeline-item active" onclick="mudarEtapa(0)">
-                <div class="timeline-dot">🌱</div>
-                <h3>1. Semeadura Controlada</h3>
+    <!-- Container Principal com imagem de fundo -->
+    <main class="login-wrapper">
+        
+        <!-- Lado Esquerdo: Boas-vindas e Botões Comerciais -->
+        <section class="welcome-side">
+            <div class="brand">
+                <span class="logo-icon">🌱</span>
+                <h1>Agro<span>Vitta</span></h1>
             </div>
-            <!-- Etapa 2 -->
-            <div class="timeline-item" onclick="mudarEtapa(1)">
-                <div class="timeline-dot">🚜</div>
-                <h3>2. Colheita de Precisão</h3>
+            <div class="welcome-text">
+                <h2>Do Campo à Mesa, com inteligência.</h2>
+                <p>Acesse nossa plataforma corporativa para monitorar lotes, rastrear entregas ou gerenciar plantios em tempo real.</p>
             </div>
-            <!-- Etapa 3 -->
-            <div class="timeline-item" onclick="mudarEtapa(2)">
-                <div class="timeline-dot">🍽️</div>
-                <h3>3. Experiência no Prato</h3>
+            <div class="action-buttons">
+                <button class="btn-secondary" onclick="alert('Conhecer nossa história...')">Nossa Tecnologia</button>
+                <button class="btn-secondary" onclick="alert('Indo para o site público...')">Ver Receitas</button>
             </div>
-        </div>
+        </section>
 
-        <!-- Painel de Detalhes Dinâmico -->
-        <div class="display-panel">
-            <div id="panel-content" class="panel-content">
-                <h3 id="panel-title">Semeadura Controlada</h3>
-                <p id="panel-text">Utilizamos sementes certificadas não-transgênicas e monitoramento de solo via IoT. Garantimos a nutrição exata da planta desde o primeiro dia na terra, otimizando o uso de água em até 40%.</p>
+        <!-- Lado Direito: Formulário de Autenticação -->
+        <section class="login-side">
+            <div class="login-box">
+                <h3>Acesse sua Conta</h3>
+                <p class="subtitle">Insira suas credenciais para entrar no painel</p>
+
+                <form onsubmit="realizarLogin(event)">
+                    <div class="input-group">
+                        <label for="usuario">Nome de Usuário ou E-mail</label>
+                        <input type="text" id="usuario" placeholder="exemplo@agrovitta.com" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox"> Lembrar-me
+                        </label>
+                        <a href="#" class="forgot-pass">Esqueceu a senha?</a>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Entrar no Sistema</button>
+                </form>
+
+                <div class="login-footer">
+                    <p>Novo por aqui? <a href="#">Solicite acesso à sua fazenda</a></p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Seção de Indicadores de Impacto (Dados Corporativos) -->
-    <section id="impacto" class="metrics-section">
-        <div class="metric-card">
-            <h2 class="counter" data-target="150">0</h2>
-            <p>Hectares Monitorados</p>
-        </div>
-        <div class="metric-card">
-            <h2 class="counter" data-target="45">0</h2>
-            <p>Toneladas Entregues/Mês</p>
-        </div>
-        <div class="metric-card">
-            <h2 class="counter" data-target="100">0</h2>
-            <p>% de Carbono Neutro</p>
-        </div>
-    </section>
-
-    <!-- Rodapé Corporativo -->
-    <footer id="contato">
-        <div class="footer-container">
-            <p>© 2026 AgroVitta S.A. | Tecnologia Agrícola Sustentável.</p>
-            <p>Compliance | Termos de Uso | Privacidade</p>
-        </div>
-    </footer>
+    </main>
 
     <script src="script.js"></script>
 </body>
