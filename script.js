@@ -1,44 +1,35 @@
 /* =========================================
-   GreenSource - JavaScript Interativo
+   GreenSource - Login Super Simples
+   (Basta clicar para entrar)
 ========================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
     
     /* ==============================
-       1. EFEITO NA NAVBAR AO SCROLL
+       1. NAVBAR AO SCROLL
     ============================== */
     const navbar = document.getElementById('navbar');
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
 
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
-            navbar.classList.remove('scrolled');
+           .navbar.classList.remove('scrolled');
         }
     });
 
     /* ==============================
-       2. MENU MOBILE TOGGLE
+       2. MENU MOBILE
     ============================== */
-    function toggleMenu() {
-        navLinks.classList.toggle('active');
-        
-        // Alternar ícone do menu
-        const icon = menuToggle.querySelector('i');
-        if (navLinks.classList.contains('active')) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
-        } else {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        }
-    }
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
 
-    if (menuToggle) {
-        menuToggle.addEventListener('click', toggleMenu);
-    }
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        const icon = menuToggle.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+    });
 
     /* ==============================
        3. MODAL DE LOGIN
@@ -46,136 +37,57 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalOverlay = document.getElementById('loginModal');
     const loginForm = document.getElementById('loginForm');
 
-    // Abrir modal
     function openModal() {
         modalOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Bloquear scroll
+        document.body.style.overflow = 'hidden';
     }
 
-    // Fechar modal
     function closeModal() {
         modalOverlay.classList.remove('active');
-        document.body.style.overflow = 'auto'; // Liberar scroll
-        
-        // Resetar formulário após fechar
-        if (loginForm) {
-            loginForm.reset();
-        }
+        document.body.style.overflow = 'auto';
+        loginForm.reset();
     }
 
-    // Fechar ao clicar fora do modal
     modalOverlay.addEventListener('click', (e) => {
-        if (e.target === modalOverlay) {
-            closeModal();
-        }
+        if (e.target === modalOverlay) closeModal();
     });
 
-    // Fechar com tecla ESC
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
-            closeModal();
-        }
+        if (e.key === 'Escape') closeModal();
     });
 
-    // Expor funções para o HTML
     window.openModal = openModal;
     window.closeModal = closeModal;
 
     /* ==============================
-       4. VALIDAÇÃO DO LOGIN
+       4. LOGIN SUPERSIMPLES
+       (Qualquer clique já entra!)
     ============================== */
-    if (loginForm) {
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const btnSubmit = loginForm.querySelector('.btn-submit');
-            const originalText = btnSubmit.innerHTML;
-
-            // Simular carregamento
-            btnSubmit.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Entrando...';
-            btnSubmit.disabled = true;
-
-            // Simular verificação (2 segundos)
-            setTimeout(() => {
-                if (username && password.length >= 4) {
-                    // Sucesso
-                    showNotification(`Bem-vindo, ${username}!`, 'success');
-                    btnSubmit.innerHTML = '<i class="fas fa-check"></i> Logado!';
-                    
-                    setTimeout(() => {
-                        closeModal();
-                        btnSubmit.innerHTML = originalText;
-                        btnSubmit.disabled = false;
-                    }, 1500);
-                } else {
-                    // Erro
-                    showNotification('Usuário ou senha inválidos!', 'error');
-                    btnSubmit.innerHTML = originalText;
-                    btnSubmit.disabled = false;
-                }
-            }, 2000);
-        });
-    }
-
-    /* ==============================
-       5. NOTIFICAÇÕES TOAST
-    ============================== */
-    function showNotification(message, type = 'info') {
-        // Remover notificação anterior se existir
-        const existing = document.querySelector('.notification');
-        if (existing) existing.remove();
-
-        const notification = document.createElement('div');
-        notification.className = `notification notification-${type}`;
-        notification.innerHTML = `
-            <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
-            <span>${message}</span>
-        `;
-
-        document.body.appendChild(notification);
-
-        // Estilos da notificação (inline para funcionar isoladamente)
-        Object.assign(notification.style, {
-            position: 'fixed',
-            top: '100px',
-            right: '20px',
-            background: type === 'success' ? '#27ae60' : '#e74c3c',
-            color: 'white',
-            padding: '15px 25px',
-            borderRadius: '10px',
-            boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
-            zIndex: '3000',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px',
-            animation: 'slideIn 0.3s ease',
-            minWidth: '250px'
-        });
-
-        // Adicionar keyframes dinamicamente
-        if (!document.querySelector('#notification-styles')) {
-            const style = document.createElement('style');
-            style.id = 'notification-styles';
-            style.textContent = `
-                @keyframes slideIn {
-                    from { opacity: 0; transform: translateX(100px); }
-                    to { opacity: 1; transform: translateX(0); }
-                }
-            `;
-            document.head.appendChild(style);
-        }
-
-        // Remover após 3 segundos
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const btnSubmit = loginForm.querySelector('.btn-submit');
+        
+        // Efeito visual de carregamento
+        btnSubmit.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Entrando...';
+        
         setTimeout(() => {
-            notification.style.animation = 'slideOut 0.3s ease';
-            setTimeout(() => notification.remove(), 300);
-        }, 3000);
-    }
+            // Sucesso total!
+            btnSubmit.innerHTML = '<i class="fas fa-check"></i> Bem-vindo!';
+            btnSubmit.style.background = '#27ae60';
+            
+            alert('✅ Login realizado com sucesso!');
+            
+            setTimeout(() => {
+                closeModal();
+                btnSubmit.innerHTML = '<span>Entrar</span> <i class="fas fa-arrow-right"></i>';
+                btnSubmit.style.background = '';
+            }, 1000);
+        }, 500);
+    });
 
     /* ==============================
-       6. SCROLL SUAVE
+       5. SCROLL SUAVE
     ============================== */
     function scrollTo(sectionId) {
         const section = document.getElementById(sectionId);
@@ -184,25 +96,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 top: section.offsetTop - 70,
                 behavior: 'smooth'
             });
-            
-            // Fechar menu mobile se aberto
-            navLinks.classList.remove('active');
         }
     }
 
     window.scrollTo = scrollTo;
 
     /* ==============================
-       7. ANIMAÇÃO DOS CARDS (INTERAÇÃO)
+       6. ANIMAÇÃO DOS CARDS
     ============================== */
-    const stepCards = document.querySelectorAll('.step-card');
-    const productCards = document.querySelectorAll('.product-card');
-
-    // Animar cards ao aparecer na tela
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
+    const cards = document.querySelectorAll('.step-card, .product-card');
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
@@ -213,10 +115,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, index * 100);
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.1 });
 
-    // Aplicar animação inicial
-    [...stepCards, ...productCards].forEach(card => {
+    cards.forEach(card => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(30px)';
         card.style.transition = 'all 0.5s ease';
@@ -224,51 +125,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==============================
-       8. ADICIONAR AO CARRINHO
+       7. ADICIONAR PRODUTO
     ============================== */
-    const addCartButtons = document.querySelectorAll('.add-cart');
-
-    addCartButtons.forEach(btn => {
+    document.querySelectorAll('.add-cart').forEach(btn => {
         btn.addEventListener('click', function() {
-            const card = this.closest('.product-card');
-            const productName = card.querySelector('h4').innerText;
+            const productName = this.closest('.product-card').querySelector('h4').innerText;
             
-            // Efeito visual
             this.innerHTML = '<i class="fas fa-check"></i> Adicionado!';
             this.style.background = '#27ae60';
             
-            showNotification(`${productName} adicionado ao carrinho!`, 'success');
+            alert(`✅ ${productName} adicionado!`);
 
-            // Resetar botão
             setTimeout(() => {
                 this.innerHTML = '<i class="fas fa-plus"></i> Adicionar';
                 this.style.background = '';
-            }, 2000);
+            }, 1500);
         });
     });
 
     /* ==============================
-       9.EFEITO PARALLAX SIMPLES
+       8. EFEITO PARALLAX
     ============================== */
-    const hero = document.querySelector('.hero');
-    
     window.addEventListener('scroll', () => {
+        const hero = document.querySelector('.hero');
         const scrolled = window.scrollY;
         if (hero && scrolled < 800) {
-            hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+            hero.style.backgroundPositionY = scrolled * 0.4 + 'px';
         }
     });
 
-    /* ==============================
-       10. MÁSCARA DE INPUT ( OPCIONAL )
-    ============================== */
-    const usernameInput = document.getElementById('username');
-    if (usernameInput) {
-        usernameInput.addEventListener('input', function() {
-            // Remove caracteres especiais
-            this.value = this.value.replace(/[^a-zA-Z0-9_]/g, '');
-        });
-    }
-
-    console.log('🚀 GreenSource JS Carregado com sucesso!');
+    console.log('🚀 Site GreenSource cargado!');
 });
