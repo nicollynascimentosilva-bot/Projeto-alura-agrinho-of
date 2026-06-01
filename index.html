@@ -3,52 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Da Semeadura ao Prato</title>
+    <title>AgroVitta | Do Campo à Mesa</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>Do Campo à Mesa</h1>
-        <p>Acompanhe a incrível jornada do alimento, desde a semente até o seu prato.</p>
+    <!-- Navegação Profissional -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Agro<span>Vitta</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#jornada">Nossa Jornada</a></li>
+                <li><a href="#impacto">Impacto</a></li>
+                <li><a href="#contato" class="btn-nav">Fale Conosco</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Introdução Impactante) -->
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <h1>Rastreabilidade e Sustentabilidade da Semente ao Prato</h1>
+            <p>Conectamos a tecnologia do campo à mesa do consumidor, garantindo alimentos puros, frescos e com propósito.</p>
+            <a href="#jornada" class="btn-primary">Conheça o Processo</a>
+        </div>
     </header>
 
-    <main class="container">
-        <!-- Etapa 1: Semeadura -->
-        <section class="card" onclick="ativarCard(this)">
-            <div class="icon">🌱</div>
-            <h2>1. A Semeadura</h2>
-            <p class="resumo">O início da vida vegetal no campo.</p>
-            <div class="detalhes">
-                <p>Tudo começa com a escolha de sementes de qualidade e um solo rico em nutrientes. Com água, sol e cuidado diário, a semente germina e cresce forte de forma sustentável.</p>
-            </div>
-        </section>
+    <!-- Seção Interativa: Linha do Tempo Corporativa -->
+    <section id="jornada" class="timeline-section">
+        <div class="section-header">
+            <h2>Nossa Cadeia de Valor</h2>
+            <p>Clique em cada etapa para auditar os nossos processos de qualidade.</p>
+        </div>
 
-        <!-- Etapa 2: A Colheita e Distribuição -->
-        <section class="card" onclick="ativarCard(this)">
-            <div class="icon">🚜</div>
-            <h2>2. A Colheita e Transporte</h2>
-            <p class="resumo">O momento de colher e escoar a produção.</p>
-            <div class="detalhes">
-                <p>No ponto certo de maturação, os alimentos são colhidos com cuidado para evitar desperdícios. Em seguida, são lavados, selecionados e transportados rapidamente para mercados e feiras locais.</p>
+        <div class="timeline">
+            <!-- Etapa 1 -->
+            <div class="timeline-item active" onclick="mudarEtapa(0)">
+                <div class="timeline-dot">🌱</div>
+                <h3>1. Semeadura Controlada</h3>
             </div>
-        </section>
-
-        <!-- Etapa 3: O Prato de Comida -->
-        <section class="card" onclick="ativarCard(this)">
-            <div class="icon">🍽️</div>
-            <h2>3. No Prato</h2>
-            <p class="resumo">A transformação final em uma refeição nutritiva.</p>
-            <div class="detalhes">
-                <p>O ciclo se completa na cozinha. Os ingredientes frescos são preparados com temperos e afeto, transformando-se em um prato saboroso, colorido e cheio de energia para nutrir o nosso corpo.</p>
+            <!-- Etapa 2 -->
+            <div class="timeline-item" onclick="mudarEtapa(1)">
+                <div class="timeline-dot">🚜</div>
+                <h3>2. Colheita de Precisão</h3>
             </div>
-        </section>
-    </main>
+            <!-- Etapa 3 -->
+            <div class="timeline-item" onclick="mudarEtapa(2)">
+                <div class="timeline-dot">🍽️</div>
+                <h3>3. Experiência no Prato</h3>
+            </div>
+        </div>
 
-    <footer>
-        <p>© 2026 - Valorizando o Ciclo do Alimento</p>
+        <!-- Painel de Detalhes Dinâmico -->
+        <div class="display-panel">
+            <div id="panel-content" class="panel-content">
+                <h3 id="panel-title">Semeadura Controlada</h3>
+                <p id="panel-text">Utilizamos sementes certificadas não-transgênicas e monitoramento de solo via IoT. Garantimos a nutrição exata da planta desde o primeiro dia na terra, otimizando o uso de água em até 40%.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Indicadores de Impacto (Dados Corporativos) -->
+    <section id="impacto" class="metrics-section">
+        <div class="metric-card">
+            <h2 class="counter" data-target="150">0</h2>
+            <p>Hectares Monitorados</p>
+        </div>
+        <div class="metric-card">
+            <h2 class="counter" data-target="45">0</h2>
+            <p>Toneladas Entregues/Mês</p>
+        </div>
+        <div class="metric-card">
+            <h2 class="counter" data-target="100">0</h2>
+            <p>% de Carbono Neutro</p>
+        </div>
+    </section>
+
+    <!-- Rodapé Corporativo -->
+    <footer id="contato">
+        <div class="footer-container">
+            <p>© 2026 AgroVitta S.A. | Tecnologia Agrícola Sustentável.</p>
+            <p>Compliance | Termos de Uso | Privacidade</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
+
