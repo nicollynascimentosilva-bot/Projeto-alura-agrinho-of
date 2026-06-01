@@ -1,68 +1,414 @@
+
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal AgroVitta | Login</title>
-    <link rel="stylesheet" href="style.css">
+    <title>GreenSource | Do Campo à Mesa</title>
+    <style>
+        /* --- CSS RESET & VARIABLES --- */
+        :root {
+            --primary-color: #2ecc71; /* Verde Fresh */
+            --dark-color: #27ae60;
+            --text-dark: #333;
+            --text-light: #f4f4f4;
+            --glass-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: background 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav.scrolled .logo {
+            color: var(--dark-color);
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links button {
+            background: transparent;
+            border: 2px solid var(--text-light);
+            color: var(--text-light);
+            padding: 10px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        nav.scrolled .nav-links button {
+            border-color: var(--dark-color);
+            color: var(--dark-color);
+        }
+
+        .nav-links button:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        /* --- HERO SECTION (Tela Inicial) --- */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            /* Imagem de fazenda/campo aleatória via Unsplash Source */
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1625246333195-78d9cc8f2913?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 20px;
+            color: white;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        /* --- LOGIN FORM CONTAINER --- */
+        .login-card {
+            background: var(--glass-bg);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .login-header h3 {
+            color: var(--dark-color);
+            font-size: 1.5rem;
+        }
+
+        .login-header p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #444;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: var(--dark-color);
+        }
+
+        .forgot-password {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: #666;
+            text-decoration: none;
+        }
+
+        .forgot-password:hover {
+            color: var(--dark-color);
+        }
+
+        /* --- SECTIONS GENERIC --- */
+        .section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            max-width: 600px;
+            margin: 0 auto 50px auto;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* --- PROCESS STEPS (Interativo) --- */
+        .steps-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 0 50px;
+        }
+
+        .step-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .step-card h4 {
+            margin: 20px 0 10px;
+            color: var(--dark-color);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #222;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .login-card { padding: 30px 20px; }
+            nav { padding: 20px; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Container Principal com imagem de fundo -->
-    <main class="login-wrapper">
-        
-        <!-- Lado Esquerdo: Boas-vindas e Botões Comerciais -->
-        <section class="welcome-side">
-            <div class="brand">
-                <span class="logo-icon">🌱</span>
-                <h1>Agro<span>Vitta</span></h1>
-            </div>
-            <div class="welcome-text">
-                <h2>Do Campo à Mesa, com inteligência.</h2>
-                <p>Acesse nossa plataforma corporativa para monitorar lotes, rastrear entregas ou gerenciar plantios em tempo real.</p>
-            </div>
-            <div class="action-buttons">
-                <button class="btn-secondary" onclick="alert('Conhecer nossa história...')">Nossa Tecnologia</button>
-                <button class="btn-secondary" onclick="alert('Indo para o site público...')">Ver Receitas</button>
-            </div>
-        </section>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">
+            Green<span>Source</span>
+        </div>
+        <div class="nav-links">
+            <button onclick="scrollToSection('login')">Entrar</button>
+        </div>
+    </nav>
 
-        <!-- Lado Direito: Formulário de Autenticação -->
-        <section class="login-side">
-            <div class="login-box">
-                <h3>Acesse sua Conta</h3>
-                <p class="subtitle">Insira suas credenciais para entrar no painel</p>
-
-                <form onsubmit="realizarLogin(event)">
-                    <div class="input-group">
-                        <label for="usuario">Nome de Usuário ou E-mail</label>
-                        <input type="text" id="usuario" placeholder="exemplo@agrovitta.com" required>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="senha">Senha</label>
-                        <input type="password" id="senha" placeholder="••••••••" required>
-                    </div>
-
-                    <div class="form-options">
-                        <label class="remember-me">
-                            <input type="checkbox"> Lembrar-me
-                        </label>
-                        <a href="#" class="forgot-pass">Esqueceu a senha?</a>
-                    </div>
-
-                    <button type="submit" class="btn-primary">Entrar no Sistema</button>
-                </form>
-
-                <div class="login-footer">
-                    <p>Novo por aqui? <a href="#">Solicite acesso à sua fazenda</a></p>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Da Semeação ao Prato</h1>
+            <p>Conectando a freshness do campo diretamente à mesa da sua família. Tecnologia, sustentabilidade e sabor em um só lugar.</p>
+            
+            <!-- Área de Login Integrada ao Hero -->
+            <div class="login-card" id="login">
+                <div class="login-header">
+                    <h3>Acesso do Cliente</h3>
+                    <p>Veuillez ingresar seus dados</p>
                 </div>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label for="username">Nome / Usuário</label>
+                        <input type="text" id="username" placeholder="Ex: joao_fazenda" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Entrar no Sistema</button>
+                    <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                </form>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
+    <!-- Sobre o Processo -->
+    <section class="section">
+        <h2 class="section-title">Nosso Processo</h2>
+        <p class="section-subtitle">Garantimos que cada etapa, desde a escolha da semente até a entrega, seja monitorada com rigor científico.</p>
+        
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h4>Semeação</h4>
+                <p>Selecionamos as melhores sementes orgânicas e monitoramos o solo nutrientizado.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h4>Cultivo</h4>
+                <p>Crescimento natural sem agrotóxicos. Monitoramento via drones e IA.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h4>Colheita</h4>
+                <p>Colheita no ponto exato de成熟idade para garantir o sabor.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h4>Entrega</h4>
+                <p>Logística rápida levando verduras e frutas fresquinhas ao seu prato.</p>
+            </div>
+        </div>
+    </section>
 
-    <script src="script.js"></script>
-</body>
-</html>
+    <!-- Footer -->
+    <footer>
+        <h3>GreenSource</h3>
+        <p>Transformando a agricultura, alimentando o futuro.</p>
+        <br>
+        <p>&copy; 2023 GreenSource Agriculture. Todos os direitos reservados.</p>
+    </footer>
 
+    <!-- JAVASCRIPT INTERATIVO -->
+    <script>
+        // 1. Efeito na Navbar ao rolar a página
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 2. Lógica do Login
+        const loginForm = document.getElementById('loginForm');
+        const loginCard = document.getElementById('login');
+        const heroContent = document.querySelector('.hero-content');
+        const usernameInput = document.getElementById('username');
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Impede recarregar a página
+            
+            const user = usernameInput.value;
+            const btn = loginForm.querySelector('button');
+
+            // Simulação de carregamento
+            btn.innerText = "Verificando...";
+            btn.style.opacity = "0.7";
+
+            setTimeout(() => {
+                // Feedback Visual de Sucesso
+                loginCard.innerHTML = `
+                    <div style="text-align: center; padding: 20px;">
+                        <img src="https://img.icons8.com/emoji/48/000000/check-mark-emoji.png" alt="OK" style="width: 60px; margin-bottom: 15px;">
+                        <h3 style="color: var(--dark-color);">Bem-vindo, ${user}!</h3>
+                        <p style="color: #
