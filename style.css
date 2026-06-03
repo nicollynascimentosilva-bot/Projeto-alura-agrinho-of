@@ -1,103 +1,278 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroFort | Futuro Sustentável</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-    <!-- Header -->
-    <header>
-        <nav class="navbar">
-            <a href="#" class="logo">Agro<span>Fort</span></a>
-            <ul class="nav-links">
-                <li><a href="#mission">Missão</a></li>
-                <li><a href="#solutions">Soluções</a></li>
-                <li><a href="#contact">Contato</a></li>
-                <li><a href="#contact" class="btn-contact">Fale Conosco</a></li>
-            </ul>
-        </nav>
-    </header>
+  /* --- VARIAVEIS DE COR --- */
+:root {
+    --primary: #2ecc71;
+    --dark: #27ae60;
+    --accent: #f1c40f;
+    --text: #333;
+    --light: #f9f9f9;
+    --white: #ffffff;
+}
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Semeação ao Prato: O Futuro é Agora</h1>
-            <p>Conectamos a força do campo à tecnologia para garantir alimentos saudáveis e sustentáveis.</p>
-            <a href="#mission" class="btn-cta">Descubra Nossa História</a>
-        </div>
-    </section>
+/* --- RESET --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-    <!-- Missão / Equilíbrio -->
-    <section id="mission" class="section">
-        <div class="section-title">
-            <h2>Equilíbrio entre Produção e Vida</h2>
-            <p>Na AgroFort, acreditamos que produzir não significa degradar. Usamos a tecnologia para respeitar o solo, a água e o futuro.</p>
-        </div>
-        <div class="grid-container">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1500937386664-56d1df2c7d9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Plantação verde">
-                <div class="card-content">
-                    <h3>Agricultura Responsável</h3>
-                    <p>Práticas que maximizam a produção sem exaurir os recursos naturais.</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1464226184884-fa280b946e74?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tecnologia no campo">
-                <div class="card-content">
-                    <h3>Tecnologia no Campo</h3>
-                    <p>Utilizamos IoT para irrigação precisa, reduzindo o uso de água.</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1488459716781-31db52582feb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cesta de vegetais">
-                <div class="card-content">
-                    <h3>Frescor no Prato</h3>
-                    <p>Diretamente da horta para a sua mesa.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+body {
+    line-height: 1.6;
+    color: var(--text);
+    background-color: var(--light);
+}
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <h3>100%</h3>
-                <p>Orgânico</p>
-            </div>
-            <div class="stat-item">
-                <h3>-40%</h3>
-                <p>Uso de Água</p>
-            </div>
-            <div class="stat-item">
-                <h3>0km</h3>
-                <p>Transporte</p>
-            </div>
-        </div>
-    </section>
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
-    <!-- Contato -->
-    <section id="contact" class="section contact-section">
-        <div class="section-title">
-            <h2>Junte-se ao Futuro</h2>
-            <p>Quer saber como levar a tecnologia agrícola para sua propriedade?</p>
-        </div>
-        <form class="contact-form" id="form-contact">
-            <input type="text" placeholder="Seu Nome" required>
-            <input type="email" placeholder="Seu E-mail" required>
-            <textarea rows="5" placeholder="Sua mensagem" required></textarea>
-            <button type="submit">Enviar Mensagem</button>
-        </form>
-    </section>
+ul {
+    list-style: none;
+}
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; <span id="year"></span> AgroFort. Todos os direitos reservados.</p>
-    </footer>
+img {
+    max-width: 100%;
+    display: block;
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+/* =========================================
+   TELA DE LOGIN
+   ========================================= */
+#login-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #1e3c00 0%, #2ecc71 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.login-box {
+    background: var(--white);
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-header h1 {
+    color: var(--dark);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.login-header h1 span {
+    color: var(--primary);
+}
+
+.login-header p {
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-login:hover {
+    background: var(--dark);
+}
+
+.msg-erro {
+    color: #e74c3c;
+    margin-top: 1rem;
+    display: none;
+    font-size: 0.9rem;
+}
+
+.msg-erro.show {
+    display: block;
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* =========================================
+   CONTEÚDO DO SITE
+   ========================================= */
+
+/* --- CABEÇALHO --- */
+header {
+    background: var(--white);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--dark);
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.btn-contact {
+    background: var(--primary);
+    color: var(--white);
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    transition: background 0.3s;
+}
+
+.btn-contact:hover {
+    background: var(--dark);
+}
+
+/* --- HERO --- */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    padding: 0 20px;
+    margin-top: 60px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.btn-cta {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--dark);
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: transform 0.3s;
+}
+
+.btn-cta:hover {
+    transform: translateY(-3px);
+    background: #f39c12;
+}
+
+/* --- SEÇÕES GERAIS --- */
+.section {
+    padding: 5rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    color: var(--dark);
+    margin-bottom: 1rem;
+}
+
+.section-title p {
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- GRID DE CARDS --- */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card img {
+    height: 200px;
