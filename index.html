@@ -3,43 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroFort | Futuro Sustentável</title>
+    <title>AgroFort | Agricultural Excellence</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/2887/2887443.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
     <!-- TELA DE LOGIN -->
     <section id="login-screen" class="login-screen">
+        <div class="login-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
         <div class="login-bg">
-            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Fazenda ao amanhecer">
+            <div class="login-slider">
+                <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Fazenda">
+                <img src="https://images.unsplash.com/photo-1500937386664-56d1df2c7d9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Campo">
+                <img src="https://images.unsplash.com/photo-1464226184884-fa280b946e74?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Tecnologia">
+            </div>
         </div>
         <div class="login-overlay"></div>
         
         <div class="login-container">
-            <div class="login-card">
+            <div class="login-brand">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-leaf"></i>
+                </div>
+                <h1>Agro<span>Fort</span></h1>
+                <p class="tagline">Cultivating Tomorrow, Today</p>
+                <p class="subline">Agricultural Excellence & Sustainability</p>
+            </div>
+            
+            <div class="login-box">
                 <div class="login-header">
-                    <div class="login-logo">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M12 12 2.1 12.05c3.6.9 7.6 1.4 9.9 1.4s6.3-.5 9.9-1.4"/></svg>
-                    </div>
-                    <h1>Agro<span>Fort</span></h1>
-                    <p>Da terra para o futuro</p>
+                    <i class="fa-solid fa-lock"></i>
+                    <span>Área Restrita</span>
                 </div>
                 
                 <form id="login-form" class="login-form">
-                    <div class="input-group">
-                        <input type="password" id="password" placeholder="Digite a senha: 123" required>
-                        <span class="input-icon">🔒</span>
+                    <div class="input-wrapper">
+                        <div class="input-icon">
+                            <i class="fa-solid fa-key"></i>
+                        </div>
+                        <input type="password" id="password" placeholder="••••••" required maxlength="6">
+                        <div class="input-line"></div>
                     </div>
+                    
+                    <div class="password-hint">
+                        <span>Dica: Número do site</span>
+                    </div>
+                    
                     <button type="submit" class="btn-login">
-                        <span>Entrar</span>
-                        <span>→</span>
+                        <span>Acessar</span>
+                        <i class="fa-solid fa-arrow-right"></i>
                     </button>
-                    <p class="error-message" id="error-msg">Senha incorreta. Tente novamente.</p>
+                    
+                    <p class="error-message" id="error-msg">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        Senha incorreta. Tente: <strong>123</strong>
+                    </p>
                 </form>
+            </div>
+            
+            <div class="login-footer-info">
+                <p><i class="fa-solid fa-tractor"></i> 2024 AgroFort Agricultural Group</p>
             </div>
         </div>
     </section>
@@ -49,269 +83,228 @@
         
         <!-- HEADER -->
         <header class="header" id="header">
-            <div class="header-content">
-                <a href="#home" class="logo">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M12 12 2.1 12.05c3.6.9 7.6 1.4 9.9 1.4s6.3-.5 9.9-1.4"/></svg>
-                    <span>Agro<span>Fort</span></span>
-                </a>
-                
-                <nav class="nav-menu" id="nav-menu">
-                    <a href="#home" class="nav-link">Início</a>
-                    <a href="#about" class="nav-link">Sobre</a>
-                    <a href="#pillars" class="nav-link">Pilares</a>
-                    <a href="#products" class="nav-link">Produtos</a>
-                    <a href="#contact" class="nav-link btn-contact">Contato</a>
-                </nav>
-                
-                <button class="menu-toggle" id="menu-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+            <div class="header-top">
+                <div class="container">
+                    <div class="header-contact">
+                        <span><i class="fa-solid fa-phone"></i> (67) 99999-9999</span>
+                        <span><i class="fa-solid fa-envelope"></i> contato@agrofort.com.br</span>
+                    </div>
+                    <div class="header-social">
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="header-main" id="header-main">
+                <div class="container">
+                    <a href="#home" class="logo">
+                        <div class="logo-icon">
+                            <i class="fa-solid fa-leaf"></i>
+                        </div>
+                        <div class="logo-text">
+                            <span>Agro<span>Fort</span></span>
+                            <small>Agricultural Excellence</small>
+                        </div>
+                    </a>
+                    
+                    <nav class="nav-menu" id="nav-menu">
+                        <div class="nav-close" id="nav-close">
+                            <i class="fa-solid fa-times"></i>
+                        </div>
+                        <a href="#home" class="nav-link active">Início</a>
+                        <a href="#about" class="nav-link">Sobre Nós</a>
+                        <a href="#services" class="nav-link">Serviços</a>
+                        <a href="#products" class="nav-link">Produtos</a>
+                        <a href="#sustainability" class="nav-link">Sustentabilidade</a>
+                        <a href="#contact" class="nav-link btn-contact">Contato</a>
+                    </nav>
+                    
+                    <button class="menu-toggle" id="menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
             </div>
         </header>
 
         <!-- HERO -->
         <section id="home" class="hero">
-            <div class="hero-bg">
-                <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Campo verde">
-            </div>
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <span>🌱</span> Agricultura Sustentável
+            <div class="hero-slider">
+                <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
+                    <div class="hero-overlay"></div>
                 </div>
-                <h1>Cultivando o <span>Futuro</span><br>com Responsabilidade</h1>
-                <p>Conectamos a força do campo à tecnologia para produzir alimentos saudáveis, preservando o meio ambiente para as próximas gerações.</p>
-                <div class="hero-buttons">
-                    <a href="#about" class="btn-primary">Descobrir Mais</a>
-                    <a href="#contact" class="btn-outline">Falar Conosco</a>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1500937386664-56d1df2c7d9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
+                    <div class="hero-overlay"></div>
                 </div>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-num">500+</span>
-                        <span class="stat-text">Hectares</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-num">100%</span>
-                        <span class="stat-text">Orgânico</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-num">40%</span>
-                        <span class="stat-text">Menos Água</span>
-                    </div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1464226184884-fa280b946e74?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
+                    <div class="hero-overlay"></div>
                 </div>
             </div>
-            <div class="scroll-indicator">
-                <span>Rolar</span>
-                <div class="mouse"></div>
+            
+            <div class="hero-particles">
+                <div class="p-particle"><i class="fa-solid fa-leaf"></i></div>
+                <div class="p-particle"><i class="fa-solid fa-seedling"></i></div>
+                <div class="p-particle"><i class="fa-solid fa-wheat-awn"></i></div>
             </div>
-        </section>
-
-        <!-- SOBRE -->
-        <section id="about" class="section about-section">
-            <div class="section-container">
-                <div class="section-header">
-                    <span class="section-label">Nossa História</span>
-                    <h2>Equilíbrio entre Produção e Natureza</h2>
-                    <p>Na AgroFort, acreditamos que tecnologia e natureza podem trabalhar juntas. Nossa missão é produzir alimentos de qualidade sem comprometer o meio ambiente.</p>
-                </div>
-                
-                <div class="about-grid">
-                    <div class="about-card">
-                        <div class="about-img">
-                            <img src="https://images.unsplash.com/photo-1500937386664-56d1df2c7d9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Plantação verde">
-                        </div>
-                        <div class="about-text">
-                            <h3>Agricultura Regenerativa</h3>
-                            <p>Práticas que restauram a saúde do solo e aumentam a biodiversidade.</p>
-                        </div>
-                    </div>
-                    <div class="about-card">
-                        <div class="about-img">
-                            <img src="https://images.unsplash.com/photo-1464226184884-fa280b946e74?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tecnologia no campo">
-                        </div>
-                        <div class="about-text">
-                            <h3>Tecnologia de Precisão</h3>
-                            <p>IoT e IA para gestão inteligente de cada metro quadrado.</p>
-                        </div>
-                    </div>
-                    <div class="about-card">
-                        <div class="about-img">
-                            <img src="https://images.unsplash.com/photo-1488459716781-31db52582feb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Vegetais frescos">
-                        </div>
-                        <div class="about-text">
-                            <h3>Do Campo ao Prato</h3>
-                            <p>Frescor garantido, menos intermediários, mais nutrientes.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PILARES -->
-        <section id="pillars" class="section pillars-section">
-            <div class="pillars-bg">
-                <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Campo de trigo">
-            </div>
-            <div class="pillars-overlay"></div>
-            <div class="section-container">
-                <div class="section-header light">
-                    <span class="section-label">Nossos Pilares</span>
-                    <h2>Sustentabilidade em Ação</h2>
-                </div>
-                
-                <div class="pillars-grid">
-                    <div class="pillar-card">
-                        <div class="pillar-icon">🌾</div>
-                        <h3>Produção</h3>
-                        <p>Cultivo eficiente que maximiza resultados sem comprometer recursos naturais.</p>
-                    </div>
-                    <div class="pillar-card">
-                        <div class="pillar-icon">💻</div>
-                        <h3>Tecnologia</h3>
-                        <p>Sistemas inteligentes para monitoramento e gestão precisa.</p>
-                    </div>
-                    <div class="pillar-card">
-                        <div class="pillar-icon">🤝</div>
-                        <h3>Comunidade</h3>
-                        <p>Conexão direta entre agricultor e consumidor.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PRODUTOS -->
-        <section id="products" class="section products-section">
-            <div class="section-container">
-                <div class="section-header">
-                    <span class="section-label">Nossos Produtos</span>
-                    <h2>Qualidade do Campo</h2>
-                    <p>Produtos frescos cultivados com responsabilidade e tecnologia.</p>
-                </div>
-                
-                <div class="products-grid">
-                    <div class="product-card">
-                        <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1551758297-d14febba26b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Soja">
-                            <span class="product-tag">Grão</span>
-                        </div>
-                        <div class="product-info">
-                            <h3>Soja Premium</h3>
-                            <p>Soja orgânica de alta qualidade.</p>
-                            <a href="#contact">Solicitar Orçamento →</a>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1551754655-cd27e38d2076?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Milho">
-                            <span class="product-tag">Grão</span>
-                        </div>
-                        <div class="product-info">
-                            <h3>Milho Orgânico</h3>
-                            <p>Milho livre de transgênicos.</p>
-                            <a href="#contact">Solicitar Orçamento →</a>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Trigo">
-                            <span class="product-tag">Grão</span>
-                        </div>
-                        <div class="product-info">
-                            <h3>Trigo Select</h3>
-                            <p>Trigo para farináceos premium.</p>
-                            <a href="#contact">Solicitar Orçamento →</a>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Arroz">
-                            <span class="product-tag">Grão</span>
-                        </div>
-                        <div class="product-info">
-                            <h3>Arroz Integral</h3>
-                            <p>Arroz integral orgânico.</p>
-                            <a href="#contact">Solicitar Orçamento →</a>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1488459716781-31db52582feb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Vegetais">
-                            <span class="product-tag">Horta</span>
-                        </div>
-                        <div class="product-info">
-                            <h3>Cesta Verde</h3>
-                            <p>Mix de vegetais frescos.</p>
-                            <a href="#contact">Solicitar Orçamento →</a>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-img">
-                            <img src="https://images.unsplash.com/photo-1557844352-761f33695a1c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Frutas">
-                            <span class="product-tag">Fruta</span>
-                        </div>
-                        <div class="product-info">
-                            <h3>Frutas da Estação</h3>
-                            <p>Frutas frescas e orgânicas.</p>
-                            <a href="#contact">Solicitar Orçamento →</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTATO -->
-        <section id="contact" class="section contact-section">
-            <div class="section-container">
-                <div class="contact-wrapper">
-                    <div class="contact-info">
-                        <span class="section-label">Fale Conosco</span>
-                        <h2>Vamos Cultivar Juntos?</h2>
-                        <p>Interessado em nossos produtos ou parceria? Entre em contato.</p>
-                        
-                        <div class="contact-list">
-                            <div class="contact-item">
-                                <span>📍</span>
-                                <span>Fazenda AgroFort, Campo Grande - MS</span>
-                            </div>
-                            <div class="contact-item">
-                                <span>📞</span>
-                                <span>(67) 99999-9999</span>
-                            </div>
-                            <div class="contact-item">
-                                <span>📧</span>
-                                <span>contato@agrofort.com.br</span>
-                            </div>
-                        </div>
+            
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="badge-icon"><i class="fa-solid fa-award"></i></span>
+                        <span class="badge-text">Líder em Agricultura Sustentável</span>
                     </div>
                     
-                    <form id="contact-form" class="contact-form">
-                        <div class="form-row">
-                            <input type="text" placeholder="Seu Nome" required>
-                            <input type="email" placeholder="Seu E-mail" required>
+                    <h1 class="hero-title">
+                        O Futuro da <span class="highlight">Agricultura</span><br>
+                        Começa Aqui
+                    </h1>
+                    
+                    <p class="hero-description">
+                        Combinamos tecnologia de ponta com práticas agrícolas sustentáveis para cultivar alimentos saudáveis, preservar o meio ambiente e construir um futuro melhor para as próximas gerações.
+                    </p>
+                    
+                    <div class="hero-buttons">
+                        <a href="#about" class="btn-hero btn-primary">
+                            <span>Descobrir Mais</span>
+                            <i class="fa-solid fa-arrow-down"></i>
+                        </a>
+                        <a href="#contact" class="btn-hero btn-secondary">
+                            <i class="fa-solid fa-play"></i>
+                            <span>Ver Vídeo</span>
+                        </a>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-box">
+                            <span class="stat-number" data-target="500">0</span>
+                            <span class="stat-suffix">+</span>
+                            <span class="stat-label">Hectares</span>
                         </div>
-                        <input type="tel" placeholder="Seu Telefone">
-                        <textarea rows="4" placeholder="Sua Mensagem" required></textarea>
-                        <button type="submit" class="btn-primary">Enviar Mensagem</button>
-                    </form>
+                        <div class="stat-box">
+                            <span class="stat-number" data-target="100">0</span>
+                            <span class="stat-suffix">%</span>
+                            <span class="stat-label">Orgânico</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number" data-target="40">0</span>
+                            <span class="stat-suffix">%</span>
+                            <span class="stat-label">Menos Água</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number" data-target="15">0</span>
+                            <span class="stat-suffix">+</span>
+                            <span class="stat-label">Anos</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="visual-card card-1">
+                        <img src="https://images.unsplash.com/photo-1500937386664-56d1df2c7d9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Soja">
+                        <div class="card-content">
+                            <span>Grãos Premium</span>
+                        </div>
+                    </div>
+                    <div class="visual-card card-2">
+                        <img src="https://images.unsplash.com/photo-1488459716781-31db52582feb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Vegetais">
+                        <div class="card-content">
+                            <span>Hortifrúti</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-slider-nav">
+                <span class="slide-dot active" data-slide="0"></span>
+                <span class="slide-dot" data-slide="1"></span>
+                <span class="slide-dot" data-slide="2"></span>
+            </div>
+            
+            <div class="scroll-indicator">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+                <span>Rolar para baixo</span>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="section about-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="header-tag">
+                        <span class="tag">Quem Somos</span>
+                    </div>
+                    <h2 class="section-title">Tradição e Inovação <span class="highlight">Juntos</span></h2>
+                    <p class="section-description">Há mais de 15 anos, a AgroFort lidera a transformação da agricultura brasileira, combinando técnicas ancestrais com tecnologia de ponta para produzir alimentos sustentáveis de excelência.</p>
+                </div>
+                
+                <div class="about-showcase">
+                    <div class="showcase-main">
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Fazenda AgroFort">
+                        <div class="showcase-badge">
+                            <i class="fa-solid fa-award"></i>
+                            <span>Prêmio Nacional de Sustentabilidade 2023</span>
+                        </div>
+                    </div>
+                    <div class="showcase-grid">
+                        <div class="showcase-item">
+                            <img src="https://images.unsplash.com/photo-1500937386664-56d1df2c7d9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Plantação">
+                        </div>
+                        <div class="showcase-item">
+                            <img src="https://images.unsplash.com/photo-1464226184884-fa280b946e74?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Tecnologia">
+                        </div>
+                        <div class="showcase-item">
+                            <img src="https://images.unsplash.com/photo-1488459716781-31db52582feb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Colheita">
+                        </div>
+                        <div class="showcase-item">
+                            <img src="https://images.unsplash.com/photo-1557844352-761f33695a1c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Vegetais">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-features">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-seedling"></i>
+                        </div>
+                        <h3>Agricultura Regenerativa</h3>
+                        <p>Práticas que restauram e melhoram a saúde do solo a cada colheita.</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <h3>Tecnologia IoT</h3>
+                        <p>Monitoramento em tempo real de cada metro quadrado da lavoura.</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-droplet"></i>
+                        </div>
+                        <h3>Irrigação Smart</h3>
+                        <p>Sistemas inteligentes que reduzem o consumo de água em até 40%.</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-hand-holding-heart"></i>
+                        </div>
+                        <h3>Fair Trade</h3>
+                        <p>Parcerias justas com agricultores locais e comunidades.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- FOOTER -->
-        <footer class="footer">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M12 12 2.1 12.05c3.6.9 7.6 1.4 9.9 1.4s6.3-.5 9.9-1.4"/></svg>
-                    <span>Agro<span>Fort</span></span>
-                </div>
-                <p>&copy; <span id="year"></span> AgroFort. Todos os direitos reservados.</p>
+        <!-- SERVICES -->
+        <section id="services" class="section services-section">
+            <div class="services-bg">
+                <div class="bg-pattern"></div>
             </div>
-        </footer>
-
-    </main>
-
-    <script src="script.js"></script>
-</body>
-</html>
+            <div class="container">
+                <div class="section-header light">
+                    <div class="header-tag">
+                        <span class="tag">O Que Fazemos
