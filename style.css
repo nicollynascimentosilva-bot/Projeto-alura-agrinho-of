@@ -1,3 +1,7 @@
+/* ============================================
+   AGROFORT - Future of Agriculture
+   CSS Profissional
+   ============================================ */
 
 /* --- VARIÁVEIS --- */
 :root {
@@ -448,12 +452,6 @@ img {
     position: relative;
     min-height: 100vh;
     display: flex;
-    position: relative;
-    display
-
-    position: relative;
-    display
-
     align-items: center;
     overflow: hidden;
 }
@@ -485,9 +483,6 @@ img {
     position: relative;
     z-index: 10;
     max-width: 700px;
-    position: relative;
-    display
-
     padding-top: 100px;
 }
 
@@ -514,15 +509,6 @@ img {
 @keyframes pulse {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.3); }
-    position: relative;
-    display
-
-    position: relative;
-    display
-
-    position: relative;
-    display
-
 }
 
 .hero-badge span {
@@ -556,12 +542,6 @@ img {
     height: 4px;
     background: var(--primary);
     border-radius: 10px;
-    position: relative;
-    display
-
-    position: relative;
-    display
-
 }
 
 .hero-content p {
@@ -589,15 +569,6 @@ img {
     color: white;
     font-weight: 600;
     box-shadow: 0 10px 30px rgba(46,204,113,0.4);
-    position: relative;
-    display
-
-    position: relative;
-    display
-
-    position: relative;
-    display
-
 }
 
 .btn-green:hover {
@@ -622,9 +593,6 @@ img {
     background: white;
     border-color: white;
     color: var(--dark);
-    position: relative;
-    display
-
 }
 
 .btn-outline-white i {
@@ -643,12 +611,6 @@ img {
 
 .number-box .num {
     display: block;
-    position: relative;
-    display
-
-    position: relative;
-    display
-
     font-size: 2.5rem;
     font-weight: 700;
     color: white;
@@ -759,4 +721,4 @@ img {
 
 .section-header p {
     color: var(--gray);
-    font-size
+    font-size:
