@@ -8,95 +8,116 @@
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <nav class="navbar">
-            <a href="#" class="logo">Agro<span>Fort</span></a>
-            <ul class="nav-links">
-                <li><a href="#mission">Missão</a></li>
-                <li><a href="#solutions">Soluções</a></li>
-                <li><a href="#contact">Contato</a></li>
-                <li><a href="#contact" class="btn-contact">Fale Conosco</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Semeação ao Prato: O Futuro é Agora</h1>
-            <p>Conectamos a força do campo à tecnologia para garantir alimentos saudáveis e sustentáveis.</p>
-            <a href="#mission" class="btn-cta">Descubra Nossa História</a>
+    <!-- TELA DE LOGIN (Proteção por Senha) -->
+    <div id="login-screen">
+        <div class="login-box">
+            <div class="login-header">
+                <h1>Agro<span>Fort</span></h1>
+                <p>Acesso Restrito</p>
+            </div>
+            <form id="form-login">
+                <div class="input-group">
+                    <input type="password" id="senha" placeholder="Digite a senha" required>
+                </div>
+                <button type="submit" class="btn-login">Entrar</button>
+                <p id="msg-erro" class="msg-erro">Senha incorreta. Tente novamente.</p>
+            </form>
         </div>
-    </section>
+    </div>
 
-    <!-- Missão / Equilíbrio -->
-    <section id="mission" class="section">
-        <div class="section-title">
-            <h2>Equilíbrio entre Produção e Vida</h2>
-            <p>Na AgroFort, acreditamos que produzir não significa degradar. Usamos a tecnologia para respeitar o solo, a água e o futuro.</p>
-        </div>
-        <div class="grid-container">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1500937386664-56d1df2c7d9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Plantação verde">
-                <div class="card-content">
-                    <h3>Agricultura Responsável</h3>
-                    <p>Práticas que maximizam a produção sem exaurir os recursos naturais.</p>
+    <!-- CONTEÚDO DO SITE (Oculto até verificar senha) -->
+    <div id="site-content" style="display: none;">
+        
+        <!-- Header -->
+        <header>
+            <nav class="navbar">
+                <a href="#" class="logo">Agro<span>Fort</span></a>
+                <ul class="nav-links">
+                    <li><a href="#mission">Missão</a></li>
+                    <li><a href="#solutions">Soluções</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                    <li><a href="#" class="btn-contact" onclick="logout()">Sair</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Semeação ao Prato: O Futuro é Agora</h1>
+                <p>Conectamos a força do campo à tecnologia para garantir alimentos saudáveis e sustentáveis.</p>
+                <a href="#mission" class="btn-cta">Descubra Nossa História</a>
+            </div>
+        </section>
+
+        <!-- Missão / Equilíbrio -->
+        <section id="mission" class="section">
+            <div class="section-title">
+                <h2>Equilíbrio entre Produção e Vida</h2>
+                <p>Na AgroFort, acreditamos que produzir não significa degradar. Usamos a tecnologia para respeitar o solo, a água e o futuro.</p>
+            </div>
+            <div class="grid-container">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1500937386664-56d1df2c7d9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Plantação verde">
+                    <div class="card-content">
+                        <h3>Agricultura Responsável</h3>
+                        <p>Práticas que maximizam a produção sem exaurir os recursos naturais.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1464226184884-fa280b946e74?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tecnologia no campo">
+                    <div class="card-content">
+                        <h3>Tecnologia no Campo</h3>
+                        <p>Utilizamos IoT para irrigação precisa, reduzindo o uso de água.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1488459716781-31db52582feb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cesta de vegetais">
+                    <div class="card-content">
+                        <h3>Frescor no Prato</h3>
+                        <p>Diretamente da horta para a sua mesa.</p>
+                    </div>
                 </div>
             </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1464226184884-fa280b946e74?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tecnologia no campo">
-                <div class="card-content">
-                    <h3>Tecnologia no Campo</h3>
-                    <p>Utilizamos IoT para irrigação precisa, reduzindo o uso de água.</p>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Orgânico</p>
+                </div>
+                <div class="stat-item">
+                    <h3>-40%</h3>
+                    <p>Uso de Água</p>
+                </div>
+                <div class="stat-item">
+                    <h3>0km</h3>
+                    <p>Transporte</p>
                 </div>
             </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1488459716781-31db52582feb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cesta de vegetais">
-                <div class="card-content">
-                    <h3>Frescor no Prato</h3>
-                    <p>Diretamente da horta para a sua mesa.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <h3>100%</h3>
-                <p>Orgânico</p>
+        <!-- Contato -->
+        <section id="contact" class="section contact-section">
+            <div class="section-title">
+                <h2>Junte-se ao Futuro</h2>
+                <p>Quer saber como levar a tecnologia agrícola para sua propriedade?</p>
             </div>
-            <div class="stat-item">
-                <h3>-40%</h3>
-                <p>Uso de Água</p>
-            </div>
-            <div class="stat-item">
-                <h3>0km</h3>
-                <p>Transporte</p>
-            </div>
-        </div>
-    </section>
+            <form class="contact-form" id="form-contact">
+                <input type="text" placeholder="Seu Nome" required>
+                <input type="email" placeholder="Seu E-mail" required>
+                <textarea rows="5" placeholder="Sua mensagem" required></textarea>
+                <button type="submit">Enviar Mensagem</button>
+            </form>
+        </section>
 
-    <!-- Contato -->
-    <section id="contact" class="section contact-section">
-        <div class="section-title">
-            <h2>Junte-se ao Futuro</h2>
-            <p>Quer saber como levar a tecnologia agrícola para sua propriedade?</p>
-        </div>
-        <form class="contact-form" id="form-contact">
-            <input type="text" placeholder="Seu Nome" required>
-            <input type="email" placeholder="Seu E-mail" required>
-            <textarea rows="5" placeholder="Sua mensagem" required></textarea>
-            <button type="submit">Enviar Mensagem</button>
-        </form>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; <span id="year"></span> AgroFort. Todos os direitos reservados.</p>
-    </footer>
+        <!-- Footer -->
+        <footer>
+            <p>&copy; <span id="year"></span> AgroFort. Todos os direitos reservados.</p>
+        </footer>
+    </div>
 
     <script src="script.js"></script>
 </body>
