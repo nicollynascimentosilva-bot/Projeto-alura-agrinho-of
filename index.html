@@ -3,141 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GreenSource | Do Campo ao Prato</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* CSS */
-        :root {
-            --primary: #27ae60;
-            --secondary: #2ecc71;
-            --dark: #1e3a2f;
-            --white: #ffffff;
-            --light: #f8f9fa;
-            --gray: #6c757d;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        html { scroll-behavior: smooth; }
-        body { background: var(--light); color: var(--dark); }
-
-        /* NAVBAR */
-        nav {
-            position: fixed; top: 0; width: 100%; padding: 18px 5%;
-            display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000; background: transparent; transition: 0.3s;
-        }
-        nav.scrolled { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 15px 5%; }
-        
-        .logo { font-size: 1.8rem; font-weight: 700; color: var(--white); display: flex; align-items: center; gap: 10px; }
-        .logo span { color: var(--secondary); }
-        nav.scrolled .logo, nav.scrolled .nav-links a { color: var(--dark); }
-
-        .nav-links { display: flex; align-items: center; gap: 30px; }
-        .nav-links a { color: var(--white); font-weight: 500; text-decoration: none; }
-        .nav-links a::after { content: ''; display: block; width: 0; height: 2px; background: var(--secondary); transition: 0.3s; }
-        .nav-links a:hover::after { width: 100%; }
-
-        .btn-login {
-            background: var(--secondary); color: var(--white); padding: 10px 25px;
-            border-radius: 30px; font-weight: 600; cursor: pointer; border: none;
-            display: flex; align-items: center; gap: 8px;
-        }
-        .btn-login:hover { background: var(--primary); transform: translateY(-2px); }
-
-        /* HERO */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-                        url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920') center/cover;
-            display: flex; align-items: center; padding: 0 5%;
-        }
-        .hero-text { color: var(--white); max-width: 600px; }
-        .hero-text h1 { font-size: 3.5rem; margin-bottom: 20px; line-height: 1.1; }
-        .hero-text p { font-size: 1.1rem; margin-bottom: 30px; opacity: 0.9; }
-        
-        .hero-buttons { display: flex; gap: 15px; }
-        .btn-primary {
-            background: var(--secondary); color: var(--white); padding: 15px 35px;
-            border-radius: 30px; font-weight: 600; border: none; cursor: pointer;
-        }
-        .btn-secondary {
-            background: transparent; color: var(--white); padding: 15px 35px;
-            border-radius: 30px; font-weight: 600; border: 2px solid var(--white); cursor: pointer;
-        }
-
-        /* MODAL */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center;
-            z-index: 2000; opacity: 0; visibility: hidden; transition: 0.3s;
-        }
-        .modal-overlay.active { opacity: 1; visibility: visible; }
-        
-        .modal {
-            background: var(--white); padding: 40px; border-radius: 15px;
-            width: 90%; max-width: 400px; transform: scale(0.8); transition: 0.3s;
-        }
-        .modal-overlay.active .modal { transform: scale(1); }
-        
-        .close-modal { position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 1.3rem; cursor: pointer; }
-        .modal-header { text-align: center; margin-bottom: 25px; }
-        .modal-header i { font-size: 2.5rem; color: var(--primary); margin-bottom: 10px; display: block; }
-        .modal-header h2 { color: var(--dark); margin-bottom: 5px; }
-        .modal-header p { color: var(--gray); font-size: 0.9rem; }
-        
-        .input-group { margin-bottom: 15px; }
-        .input-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; }
-        .input-group input { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem; }
-        
-        .btn-submit {
-            width: 100%; padding: 14px; background: var(--primary); color: var(--white);
-            border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer;
-            margin-top: 10px;
-        }
-        .btn-submit:hover { background: var(--dark); }
-
-        .modal-footer { text-align: center; margin-top: 15px; font-size: 0.9rem; }
-        .modal-footer a { color: var(--secondary); }
-
-        /* PROCESS */
-        .section { padding: 80px 5%; text-align: center; }
-        .section-title { font-size: 2.5rem; color: var(--dark); margin-bottom: 15px; }
-        .section-subtitle { color: var(--gray); max-width: 600px; margin: 0 auto 50px; }
-
-        .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .step-card { background: var(--white); padding: 30px; border-radius: 15px; transition: 0.3s; }
-        .step-card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .step-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; }
-        .step-card h3 { margin-bottom: 10px; }
-        .step-card p { color: var(--gray); }
-        .step-number { font-size: 3rem; color: rgba(39,174,96,0.1); position: absolute; right: 20px; }
-
-        /* PRODUCTS */
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .product-card { background: var(--white); border-radius: 15px; overflow: hidden; transition: 0.3s; }
-        .product-card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .product-image { height: 200px; overflow: hidden; }
-        .product-image img { width: 100%; height: 100%; object-fit: cover; }
-        .product-info { padding: 20px; }
-        .product-info h4 { margin-bottom: 5px; }
-        .product-info .price { color: var(--primary); font-weight: 700; font-size: 1.2rem; margin-bottom: 15px; }
-        .add-cart { background: var(--secondary); color: var(--white); padding: 10px 20px; border-radius: 25px; border: none; cursor: pointer; font-weight: 600; }
-
-        /* FOOTER */
-        footer { background: var(--dark); color: var(--white); padding: 50px 5%; text-align: center; }
-        .footer-brand { font-size: 1.8rem; margin-bottom: 15px; }
-        .social-links { margin-top: 20px; display: flex; justify-content: center; gap: 20px; }
-        .social-links a { color: var(--white); font-size: 1.5rem; }
-        .footer-bottom { margin-top: 30px; opacity: 0.6; font-size: 0.9rem; }
-    </style>
+    <title>AgroFort | Futuro Sustentável</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <nav id="navbar">
-        <div class="logo"><i class="fas fa-leaf"></i> Green<span>Source</span></div>
-        <ul class="nav-links">
-            <li><a href="#home">Início</a></li>
-            <li><a href="#process">Processo</a></li>
-            <li><a href="#products">Produtos</a></li>
-            <button class="btn-login" onclick="ab
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">Agro<span>Fort</span></a>
+            <ul class="nav-links">
+                <li><a href="#mission">Missão</a></li>
+                <li><a href="#solutions">Soluções</a></li>
+                <li><a href="#contact">Contato</a></li>
+                <li><a href="#contact" class="btn-contact">Fale Conosco</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Semeação ao Prato: O Futuro é Agora</h1>
+            <p>Conectamos a força do campo à tecnologia para garantir alimentos saudáveis e sustentáveis.</p>
+            <a href="#mission" class="btn-cta">Descubra Nossa História</a>
+        </div>
+    </section>
+
+    <!-- Missão / Equilíbrio -->
+    <section id="mission" class="section">
+        <div class="section-title">
+            <h2>Equilíbrio entre Produção e Vida</h2>
+            <p>Na AgroFort, acreditamos que produzir não significa degradar. Usamos a tecnologia para respeitar o solo, a água e o futuro.</p>
+        </div>
+        <div class="grid-container">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1500937386664-56d1df2c7d9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Plantação verde">
+                <div class="card-content">
+                    <h3>Agricultura Responsável</h3>
+                    <p>Práticas que maximizam a produção sem exaurir os recursos naturais.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1464226184884-fa280b946e74?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tecnologia no campo">
+                <div class="card-content">
+                    <h3>Tecnologia no Campo</h3>
+                    <p>Utilizamos IoT para irrigação precisa, reduzindo o uso de água.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1488459716781-31db52582feb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cesta de vegetais">
+                <div class="card-content">
+                    <h3>Frescor no Prato</h3>
+                    <p>Diretamente da horta para a sua mesa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Orgânico</p>
+            </div>
+            <div class="stat-item">
+                <h3>-40%</h3>
+                <p>Uso de Água</p>
+            </div>
+            <div class="stat-item">
+                <h3>0km</h3>
+                <p>Transporte</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contact" class="section contact-section">
+        <div class="section-title">
+            <h2>Junte-se ao Futuro</h2>
+            <p>Quer saber como levar a tecnologia agrícola para sua propriedade?</p>
+        </div>
+        <form class="contact-form" id="form-contact">
+            <input type="text" placeholder="Seu Nome" required>
+            <input type="email" placeholder="Seu E-mail" required>
+            <textarea rows="5" placeholder="Sua mensagem" required></textarea>
+            <button type="submit">Enviar Mensagem</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; <span id="year"></span> AgroFort. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
