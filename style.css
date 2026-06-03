@@ -1,327 +1,103 @@
-/* ==============================
-   VARIÁVEIS E RESET
-================================ */
-:root {
-    --primary: #27ae60;
-    --secondary: #2ecc71;
-    --dark: #1e3a2f;
-    --light: #f8f9fa;
-    --gray: #6c757d;
-    --white: #ffffff;
-    --shadow: 0 10px 30px rgba(0,0,0,0.1);
-    --shadow-hover: 0 15px 40px rgba(0,0,0,0.15);
-    --transition: all 0.3s ease;
-}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroFort | Futuro Sustentável</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">Agro<span>Fort</span></a>
+            <ul class="nav-links">
+                <li><a href="#mission">Missão</a></li>
+                <li><a href="#solutions">Soluções</a></li>
+                <li><a href="#contact">Contato</a></li>
+                <li><a href="#contact" class="btn-contact">Fale Conosco</a></li>
+            </ul>
+        </nav>
+    </header>
 
-html {
-    scroll-behavior: smooth;
-}
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Semeação ao Prato: O Futuro é Agora</h1>
+            <p>Conectamos a força do campo à tecnologia para garantir alimentos saudáveis e sustentáveis.</p>
+            <a href="#mission" class="btn-cta">Descubra Nossa História</a>
+        </div>
+    </section>
 
-body {
-    background: var(--light);
-    color: var(--dark);
-    line-height: 1.6;
-}
+    <!-- Missão / Equilíbrio -->
+    <section id="mission" class="section">
+        <div class="section-title">
+            <h2>Equilíbrio entre Produção e Vida</h2>
+            <p>Na AgroFort, acreditamos que produzir não significa degradar. Usamos a tecnologia para respeitar o solo, a água e o futuro.</p>
+        </div>
+        <div class="grid-container">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1500937386664-56d1df2c7d9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Plantação verde">
+                <div class="card-content">
+                    <h3>Agricultura Responsável</h3>
+                    <p>Práticas que maximizam a produção sem exaurir os recursos naturais.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1464226184884-fa280b946e74?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tecnologia no campo">
+                <div class="card-content">
+                    <h3>Tecnologia no Campo</h3>
+                    <p>Utilizamos IoT para irrigação precisa, reduzindo o uso de água.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1488459716781-31db52582feb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cesta de vegetais">
+                <div class="card-content">
+                    <h3>Frescor no Prato</h3>
+                    <p>Diretamente da horta para a sua mesa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-a { text-decoration: none; }
-ul { list-style: none; }
-button { cursor: pointer; border: none; outline: none; }
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Orgânico</p>
+            </div>
+            <div class="stat-item">
+                <h3>-40%</h3>
+                <p>Uso de Água</p>
+            </div>
+            <div class="stat-item">
+                <h3>0km</h3>
+                <p>Transporte</p>
+            </div>
+        </div>
+    </section>
 
-/* ==============================
-   NAVBAR
-================================ */
-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 18px 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
-    transition: var(--transition);
-    background: transparent;
-}
+    <!-- Contato -->
+    <section id="contact" class="section contact-section">
+        <div class="section-title">
+            <h2>Junte-se ao Futuro</h2>
+            <p>Quer saber como levar a tecnologia agrícola para sua propriedade?</p>
+        </div>
+        <form class="contact-form" id="form-contact">
+            <input type="text" placeholder="Seu Nome" required>
+            <input type="email" placeholder="Seu E-mail" required>
+            <textarea rows="5" placeholder="Sua mensagem" required></textarea>
+            <button type="submit">Enviar Mensagem</button>
+        </form>
+    </section>
 
-nav.scrolled {
-    background: var(--white);
-    box-shadow: var(--shadow);
-    padding: 15px 5%;
-}
+    <!-- Footer -->
+    <footer>
+        <p>&copy; <span id="year"></span> AgroFort. Todos os direitos reservados.</p>
+    </footer>
 
-.logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--white);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.logo i { color: var(--secondary); }
-.logo span { color: var(--secondary); }
-
-nav.scrolled .logo,
-nav.scrolled .nav-links a {
-    color: var(--dark);
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 35px;
-}
-
-.nav-links a {
-    color: var(--white);
-    font-weight: 500;
-    font-size: 1rem;
-    transition: var(--transition);
-    position: relative;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--secondary);
-    transition: var(--transition);
-}
-
-.nav-links a:hover::after { width: 100%; }
-
-.btn-login {
-    background: var(--secondary);
-    color: var(--white);
-    padding: 10px 25px;
-    border-radius: 30px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: var(--transition);
-}
-
-.btn-login:hover {
-    background: var(--primary);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
-}
-
-.menu-toggle {
-    display: none;
-    color: var(--white);
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-/* ==============================
-   HERO SECTION
-================================ */
-.hero {
-    height: 100vh;
-    background: linear-gradient(105deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%),
-                url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&w=1920') center/cover;
-    display: flex;
-    align-items: center;
-    padding: 0 5%;
-}
-
-.hero-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-}
-
-.hero-text {
-    color: var(--white);
-    max-width: 650px;
-    animation: slideLeft 1s ease;
-}
-
-.badge {
-    display: inline-block;
-    background: rgba(46, 204, 113, 0.2);
-    color: var(--secondary);
-    padding: 8px 20px;
-    border-radius: 30px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    border: 1px solid var(--secondary);
-}
-
-.hero-text h1 {
-    font-size: 4rem;
-    line-height: 1.1;
-    margin-bottom: 25px;
-    letter-spacing: -1px;
-}
-
-.hero-text p {
-    font-size: 1.2rem;
-    opacity: 0.9;
-    margin-bottom: 35px;
-    max-width: 500px;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 50px;
-}
-
-.btn-primary, .btn-secondary {
-    padding: 15px 35px;
-    border-radius: 30px;
-    font-size: 1rem;
-    font-weight: 600;
-    transition: var(--transition);
-}
-
-.btn-primary {
-    background: var(--secondary);
-    color: var(--white);
-}
-
-.btn-primary:hover {
-    background: var(--primary);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(46, 204, 113, 0.4);
-}
-
-.btn-secondary {
-    background: transparent;
-    border: 2px solid var(--white);
-    color: var(--white);
-}
-
-.btn-secondary:hover {
-    background: var(--white);
-    color: var(--dark);
-}
-
-.hero-stats {
-    display: flex;
-    gap: 50px;
-}
-
-.stat h3 {
-    font-size: 2rem;
-    color: var(--secondary);
-}
-
-.stat p {
-    font-size: 0.9rem;
-    opacity: 0.8;
-}
-
-@keyframes slideLeft {
-    from { opacity: 0; transform: translateX(-50px); }
-    to { opacity: 1; transform: translateX(0); }
-}
-
-/* ==============================
-   MODAL DE LOGIN
-================================ */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-    opacity: 0;
-    visibility: hidden;
-    transition: var(--transition);
-    backdrop-filter: blur(8px);
-}
-
-.modal-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.modal {
-    background: var(--white);
-    padding: 45px;
-    border-radius: 20px;
-    width: 90%;
-    max-width: 420px;
-    position: relative;
-    transform: scale(0.8);
-    transition: var(--transition);
-    box-shadow: var(--shadow-hover);
-}
-
-.modal-overlay.active .modal {
-    transform: scale(1);
-}
-
-.close-modal {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    background: none;
-    border: none;
-    font-size: 1.4rem;
-    color: var(--gray);
-    transition: var(--transition);
-}
-
-.close-modal:hover { color: var(--dark); }
-
-.modal-header {
-    text-align: center;
-    margin-bottom: 35px;
-}
-
-.logo-modal {
-    font-size: 3rem;
-    color: var(--primary);
-    margin-bottom: 15px;
-}
-
-.modal-header h2 {
-    color: var(--dark);
-    margin-bottom: 8px;
-}
-
-.modal-header p {
-    color: var(--gray);
-    font-size: 0.95rem;
-}
-
-.input-group {
-    margin-bottom: 20px;
-}
-
-.input-group label {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-    font-weight: 600;
-    color: var(--dark);
-    font-size: 0.95rem;
-}
-
-.input-group input {
-    width: 100%;
-    padding: 14px;
-    border: 2px solid #eee;
-    border
+    <script src="script.js"></script>
+</body>
+</html>
