@@ -1,8 +1,5 @@
-css
-
-Copy code
 /* ========================================
-   AGROFORT - CSS PRINCIPAL
+   AGROFORT - CSS COMPLETO
    ======================================== */
 
 /* --- VARIÁVEIS --- */
@@ -95,28 +92,26 @@ button {
     letter-spacing: 2px;
     margin-bottom: 15px;
     position: relative;
+    padding: 0 40px;
 }
 
-.section-tag::before {
-    content: '';
-    position: absolute;
-    left: -30px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 2px;
-    background: var(--primary);
-}
-
+.section-tag::before,
 .section-tag::after {
     content: '';
     position: absolute;
-    right: -30px;
     top: 50%;
     transform: translateY(-50%);
-    width: 20px;
+    width: 30px;
     height: 2px;
     background: var(--primary);
+}
+
+.section-tag::before {
+    left: 0;
+}
+
+.section-tag::after {
+    right: 0;
 }
 
 .section-header h2 {
@@ -147,12 +142,20 @@ button {
     z-index: 1000;
     background: var(--white);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: var(--transition);
+}
+
+.header.scrolled {
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.header.scrolled .navbar {
+    padding: 10px 0;
 }
 
 .header-top {
     background: var(--primary);
-    padding: 10px 0;
-    display: none;
+    padding: 8px 0;
 }
 
 .header-top .container {
@@ -163,7 +166,7 @@ button {
 
 .header-info {
     display: flex;
-    gap: 30px;
+    gap: 25px;
 }
 
 .header-info span {
@@ -188,10 +191,12 @@ button {
 
 .header-social a:hover {
     color: var(--secondary);
+    transform: translateY(-2px);
 }
 
 .navbar {
-    padding: 20px 0;
+    padding: 15px 0;
+    transition: var(--transition);
 }
 
 .navbar .container {
@@ -233,15 +238,16 @@ button {
 }
 
 .logo-text small {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--gray);
     display: block;
+    letter-spacing: 1px;
 }
 
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 35px;
+    gap: 30px;
 }
 
 .nav-menu li a {
@@ -250,12 +256,13 @@ button {
     color: var(--dark);
     transition: var(--transition);
     position: relative;
+    padding: 5px 0;
 }
 
 .nav-menu li a::after {
     content: '';
     position: absolute;
-    bottom: -5px;
+    bottom: 0;
     left: 0;
     width: 0;
     height: 2px;
@@ -276,7 +283,7 @@ button {
 .btn-contact {
     background: var(--primary) !important;
     color: var(--white) !important;
-    padding: 12px 25px !important;
+    padding: 10px 25px !important;
     border-radius: 25px !important;
 }
 
@@ -286,6 +293,7 @@ button {
 
 .btn-contact:hover {
     background: var(--primary-dark) !important;
+    transform: translateY(-2px);
 }
 
 .menu-toggle {
@@ -293,6 +301,7 @@ button {
     flex-direction: column;
     gap: 5px;
     padding: 10px;
+    cursor: pointer;
 }
 
 .menu-toggle span {
@@ -301,6 +310,18 @@ button {
     background: var(--dark);
     border-radius: 3px;
     transition: var(--transition);
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
 }
 
 /* --- HERO --- */
@@ -318,6 +339,7 @@ button {
     left: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 .hero-slide {
@@ -330,10 +352,12 @@ button {
     background-position: center;
     opacity: 0;
     transition: opacity 1s ease;
+    transform: scale(1.1);
 }
 
 .hero-slide.active {
     opacity: 1;
+    transform: scale(1);
 }
 
 .hero-overlay {
@@ -342,7 +366,7 @@ button {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
+    background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 100%);
 }
 
 .hero-content {
@@ -355,29 +379,30 @@ button {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.15);
     padding: 10px 20px;
     border-radius: 30px;
     margin-bottom: 25px;
     backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 .badge-dot {
     width: 10px;
     height: 10px;
-    background: var(--primary);
+    background: var(--primary-light);
     border-radius: 50%;
     animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
     0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.2); opacity: 0.7; }
+    50% { transform: scale(1.3); opacity: 0.7; }
 }
 
 .hero-badge span {
     color: var(--white);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -385,10 +410,10 @@ button {
 
 .hero-content h1 {
     font-family: var(--font-display);
-    font-size: 64px;
+    font-size: 60px;
     font-weight: 700;
     color: var(--white);
-    line-height: 1.2;
+    line-height: 1.15;
     margin-bottom: 25px;
 }
 
@@ -415,17 +440,17 @@ button {
     gap: 10px;
     background: var(--gradient);
     color: var(--white);
-    padding: 15px 30px;
+    padding: 15px 32px;
     border-radius: 30px;
     font-size: 15px;
     font-weight: 600;
     transition: var(--transition);
-    box-shadow: 0 5px 20px rgba(46, 125, 50, 0.4);
+    box-shadow: 0 5px 25px rgba(46, 125, 50, 0.4);
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(46, 125, 50, 0.5);
+    box-shadow: 0 10px 35px rgba(46, 125, 50, 0.5);
 }
 
 .btn-outline {
@@ -434,17 +459,19 @@ button {
     gap: 10px;
     background: transparent;
     color: var(--white);
-    padding: 15px 30px;
+    padding: 15px 32px;
     border-radius: 30px;
     font-size: 15px;
     font-weight: 600;
-    border: 2px solid var(--white);
+    border: 2px solid rgba(255,255,255,0.5);
     transition: var(--transition);
 }
 
 .btn-outline:hover {
     background: var(--white);
     color: var(--primary);
+    border-color: var(--white);
+    transform: translateY(-3px);
 }
 
 .hero-stats {
@@ -462,28 +489,31 @@ button {
     font-weight: 700;
     color: var(--white);
     display: block;
+    line-height: 1;
 }
 
 .stat-box small {
     font-size: 24px;
     color: var(--primary-light);
+    font-weight: 600;
 }
 
 .stat-label {
-    font-size: 14px;
-    color: rgba(255,255,255,0.7);
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
     display: block;
     text-transform: uppercase;
     letter-spacing: 1px;
+    margin-top: 5px;
 }
 
 .hero-slider-nav {
     position: absolute;
-    bottom: 150px;
+    bottom: 120px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 15px;
+    gap: 12px;
     z-index: 10;
 }
 
@@ -497,52 +527,63 @@ button {
 }
 
 .hero-slider-nav .dot.active {
-    background: var(--primary);
-    transform: scale(1.2);
+    background: var(--primary-light);
+    transform: scale(1.3);
+}
+
+.hero-slider-nav .dot:hover {
+    background: var(--white);
 }
 
 .scroll-down {
     position: absolute;
-    bottom: 50px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
     z-index: 10;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-10px); }
+    60% { transform: translateX(-50%) translateY(-5px); }
 }
 
 .scroll-down span {
     display: block;
     color: var(--white);
-    font-size: 12px;
+    font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .mouse {
-    width: 26px;
-    height: 40px;
+    width: 24px;
+    height: 38px;
     border: 2px solid rgba(255,255,255,0.5);
-    border-radius: 13px;
+    border-radius: 12px;
     margin: 0 auto;
     position: relative;
 }
 
 .wheel {
-    width: 4px;
-    height: 8px;
+    width: 3px;
+    height: 7px;
     background: var(--white);
     border-radius: 2px;
     position: absolute;
-    top: 8px;
+    top: 6px;
     left: 50%;
     transform: translateX(-50%);
-    animation: scroll 2s infinite;
+    animation: scrollWheel 2s infinite;
 }
 
-@keyframes scroll {
-    0% { top: 8px; opacity: 1; }
-    100% { top: 20px; opacity: 0; }
+@keyframes scrollWheel {
+    0% { top: 6px; opacity: 1; }
+    100% { top: 18px; opacity: 0; }
 }
 
 /* --- ABOUT --- */
@@ -570,7 +611,7 @@ button {
 }
 
 .about-card .card-image {
-    height: 250px;
+    height: 220px;
     overflow: hidden;
 }
 
@@ -598,7 +639,8 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 20px;
+    margin: -55px auto 20px;
+    border: 4px solid var(--white);
 }
 
 .card-icon i {
@@ -645,7 +687,7 @@ button {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.75);
     z-index: 0;
 }
 
@@ -659,8 +701,13 @@ button {
     color: var(--white);
 }
 
-.services-section .section-header p {
-    color: rgba(255,255,255,0.8);
+.services-section .section-tag {
+    color: var(--secondary);
+}
+
+.services-section .section-tag::before,
+.services-section .section-tag::after {
+    background: var(--secondary);
 }
 
 .services-grid {
@@ -681,7 +728,7 @@ button {
 }
 
 .service-card .service-image {
-    height: 200px;
+    height: 180px;
     overflow: hidden;
 }
 
@@ -697,23 +744,23 @@ button {
 }
 
 .service-card .service-content {
-    padding: 30px;
+    padding: 25px;
 }
 
 .service-tag {
     display: inline-block;
     background: var(--primary);
     color: var(--white);
-    padding: 5px 15px;
+    padding: 6px 14px;
     border-radius: 15px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     text-transform: uppercase;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .service-card h3 {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 600;
     color: var(--dark);
     margin-bottom: 10px;
@@ -721,7 +768,8 @@ button {
 
 .service-card > p {
     color: var(--gray);
-    margin-bottom: 20px;
+    font-size: 14px;
+    margin-bottom: 18px;
 }
 
 .service-card ul li {
@@ -733,58 +781,4 @@ button {
     margin-bottom: 10px;
 }
 
-.service-card ul li i {
-    color: var(--primary);
-}
-
-/* --- PRODUCTS --- */
-.products-section {
-    background: var(--light);
-}
-
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-}
-
-.product-card {
-    background: var(--white);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-}
-
-.product-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-hover);
-}
-
-.product-card .product-image {
-    height: 220px;
-    overflow: hidden;
-    position: relative;
-}
-
-.product-card .product-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: var(--transition);
-}
-
-.product-card:hover .product-image img {
-    transform: scale(1.1);
-}
-
-.product-badge {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: var(--secondary);
-    color: var(--dark);
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 12px;
-    font
+.service-card
