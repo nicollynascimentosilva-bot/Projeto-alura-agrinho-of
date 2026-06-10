@@ -1,13 +1,10 @@
-/* ========================================
-   AGROFORTE - JavaScript Completo
-   ======================================== */
+/* ======================================== */
+/* AGROFORTE - JavaScript Completo */
+/* ======================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
     
-    /* ========================================
-       VARIÁVEIS
-       ======================================== */
-    
+    /* === VARIÁVEIS === */
     const header = document.getElementById('header');
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
@@ -19,10 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let slideInterval;
     
     
-    /* ========================================
-       HEADER SCROLL EFFECT
-       ======================================== */
-    
+    /* === HEADER SCROLL EFFECT === */
     window.addEventListener('scroll', function() {
         const currentScroll = window.scrollY;
         
@@ -43,10 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     
-    /* ========================================
-       MOBILE MENU
-       ======================================== */
-    
+    /* === MOBILE MENU === */
     if (menuToggle && navMenu) {
         menuToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
@@ -71,10 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     
-    /* ========================================
-       HERO SLIDER
-       ======================================== */
-    
+    /* === HERO SLIDER === */
     const heroSlides = document.querySelectorAll('.hero-slide');
     const sliderDots = document.querySelectorAll('.hero-slider-nav .dot');
     
@@ -133,23 +121,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     
-    /* ========================================
-       SMOOTH SCROLL
-       ======================================== */
-    
+    /* === SMOOTH SCROLL === */
     document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
             
             if (href === '#' || href === '#home') {
-                // É só ir para o topo ou já é o link padrão
-                if (href === '#home' || href === '#') {
-                    e.preventDefault();
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                }
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
                 return;
             }
             
@@ -169,10 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     
-    /* ========================================
-       SCROLL TOP
-       ======================================== */
-    
+    /* === SCROLL TOP === */
     if (scrollTopBtn) {
         scrollTopBtn.addEventListener('click', function() {
             window.scrollTo({
@@ -183,10 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     
-    /* ========================================
-       FORMULÁRIO DE CONTATO
-       ======================================== */
-    
+    /* === FORMULÁRIO DE CONTATO === */
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -217,4 +193,65 @@ document.addEventListener('DOMContentLoaded', function() {
             btn.disabled = true;
             
             setTimeout(function() {
-                alert
+                alert('Obrigado, ' + nome + '! Sua mensagem foi enviada com sucesso. Em breve entraremos em contato.');
+                contactForm.reset();
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 1500);
+        });
+    }
+    
+    // Função validar email
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+    
+    
+    /* === ANIMAÇÃO NO SCROLL === */
+    const animateElements = document.querySelectorAll('.service-card, .about-image, .video-card');
+    
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    animateElements.forEach(function(el, index) {
+        if (el.classList.contains('service-card')) {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease ' + (index * 0.1) + 's';
+        }
+        observer.observe(el);
+    });
+    
+    
+    /* === RESPONSIVIDADE === */
+    function checkResponsive() {
+        const isMobile = window.innerWidth < 768;
+        
+        // Ajustar título do hero
+        const heroTitle = document.querySelector('.hero h1');
+        if (heroTitle) {
+            heroTitle.style.fontSize = isMobile ? '28px' : '56px';
+        }
+    }
+    
+    window.addEventListener('resize', checkResponsive);
+    checkResponsive();
+    
+    
+    /* === CONSOLE LOG === */
+    console.log('✅ AgroForte - Site carregado com sucesso!');
+    console.log('🌱 Desenvolvido com foco em sustentabilidade');
+    
+});
