@@ -1,17 +1,31 @@
 /* ========================================
-   AGROFORT - JAVASCRIPT PRINCIPAL
+   AGROFORT - JavaScript Otimizado
    ======================================== */
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
+    
+    /* ========================================
+       VARIÁVEIS GLOBAIS
+       ======================================== */
+    
+    const header = document.querySelector('.header');
+    const navbar = document.querySelector('.navbar');
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    
+    let lastScroll = 0;
+    let statsAnimated = false;
+    let currentSlide = 0;
+    let slideInterval;
+    
     
     /* ========================================
        HEADER SCROLL EFFECT
        ======================================== */
     
-    const header = document.querySelector('.header');
-    const navbar = document.querySelector('.navbar');
-    
-    window.addEventListener('scroll', function() {
+    const headerScrollEffect = () => {
+        if (!header || !navbar) return;
+        
         if (window.scrollY > 50) {
             header.classList.add('scrolled');
             navbar.classList.add('scrolled');
@@ -19,30 +33,33 @@ document.addEventListener('DOMContentLoaded', function() {
             header.classList.remove('scrolled');
             navbar.classList.remove('scrolled');
         }
-    });
+    };
+    
+    window.addEventListener('scroll', headerScrollEffect);
     
     
     /* ========================================
        MOBILE MENU TOGGLE
        ======================================== */
     
-    const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.getElementById('navMenu');
-    
-    if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', function() {
+    const menuToggleFunction = () => {
+        if (!menuToggle || !navMenu) return;
+        
+        menuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
             menuToggle.classList.toggle('active');
         });
         
         // Fechar menu ao clicar em um link
-        navMenu.querySelectorAll('a').forEach(function(link) {
-            link.addEventListener('click', function() {
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
                 menuToggle.classList.remove('active');
             });
         });
-    }
+    };
+    
+    menuToggleFunction();
     
     
     /* ========================================
@@ -51,57 +68,50 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const heroSlides = document.querySelectorAll('.hero-slide');
     const sliderDots = document.querySelectorAll('.hero-slider-nav .dot');
-    let currentSlide = 0;
-    let slideInterval;
     
-    function showSlide(index) {
-        heroSlides.forEach(function(slide) {
-            slide.classList.remove('active');
-        });
+    const showSlide = (index) => {
+        heroSlides.forEach(slide => slide.classList.remove('active'));
+        sliderDots.forEach(dot => dot.classList.remove('active'));
         
-        sliderDots.forEach(function(dot) {
-            dot.classList.remove('active');
-        });
-        
-        heroSlides[index].classList.add('active');
-        sliderDots[index].classList.add('active');
+        heroSlides[index]?.classList.add('active');
+        sliderDots[index]?.classList.add('active');
         currentSlide = index;
-    }
+    };
     
-    function nextSlide() {
-        let next = currentSlide + 1;
-        if (next >= heroSlides.length) {
-            next = 0;
-        }
-        showSlide(next);
-    }
+    const nextSlide = () => {
+        const next = currentSlide + 1;
+        showSlide(next >= heroSlides.length ? 0 : next);
+    };
     
-    function startSlider() {
+    const startSlider = () => {
         slideInterval = setInterval(nextSlide, 5000);
-    }
+    };
     
-    function stopSlider() {
+    const stopSlider = () => {
         clearInterval(slideInterval);
-    }
+    };
     
-    // Iniciar slider automaticamente
-    if (heroSlides.length > 0) {
+    const heroSliderInit = () => {
+        if (heroSlides.length === 0) return;
+        
         startSlider();
         
-        // Controle manual pelos dots
-        sliderDots.forEach(function(dot, index) {
-            dot.addEventListener('click', function() {
+        sliderDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
                 stopSlider();
                 showSlide(index);
                 startSlider();
             });
         });
         
-        // Pausar ao passar o mouse
         const heroSection = document.querySelector('.hero');
-        heroSection.addEventListener('mouseenter', stopSlider);
-        heroSection.addEventListener('mouseleave', startSlider);
-    }
+        if (heroSection) {
+            heroSection.addEventListener('mouseenter', stopSlider);
+            heroSection.addEventListener('mouseleave', startSlider);
+        }
+    };
+    
+    heroSliderInit();
     
     
     /* ========================================
@@ -111,16 +121,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-menu li a');
     
-    function highlightNavOnScroll() {
+    const highlightNavOnScroll = () => {
         const scrollPos = window.scrollY + 150;
         
-        sections.forEach(function(section) {
+        sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.offsetHeight;
             const sectionId = section.getAttribute('id');
             
             if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                navLinks.forEach(function(link) {
+                navLinks.forEach(link => {
                     link.classList.remove('active');
                     if (link.getAttribute('href') === '#' + sectionId) {
                         link.classList.add('active');
@@ -128,13 +138,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
         });
-    }
+    };
     
     window.addEventListener('scroll', highlightNavOnScroll);
     
     
     /* ========================================
-       SCROLL ANIMATIONS
+       SCROLL ANIMATIONS (INTERSECTION OBSERVER)
        ======================================== */
     
     const animateElements = document.querySelectorAll('.about-card, .service-card, .product-card');
@@ -144,30 +154,22 @@ document.addEventListener('DOMContentLoaded', function() {
         rootMargin: '0px 0px -50px 0px'
     };
     
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate');
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
     
-    animateElements.forEach(function(el, index) {
+    animateElements.forEach((el, index) => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.6s ease ' + (index * 0.1) + 's';
+        el.style.transition = `all 0.6s ease ${index * 0.1}s`;
         observer.observe(el);
-    });
-    
-    // Adicionar classe animate via JS
-    document.addEventListener('scroll', function() {
-        animateElements.forEach(function(el) {
-            if (el.classList.contains('animate')) {
-                el.style.opacity = '1';
-                el.style.transform = 'translateY(0)';
-            }
-        });
     });
     
     
@@ -175,14 +177,19 @@ document.addEventListener('DOMContentLoaded', function() {
        SMOOTH SCROLL
        ======================================== */
     
-    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === '#') {
+                e.preventDefault();
+                return;
+            }
+            
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
+            const target = document.querySelector(href);
+            if (target && header) {
                 const headerHeight = header.offsetHeight;
                 const targetPosition = target.offsetTop - headerHeight;
-                
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
@@ -193,42 +200,83 @@ document.addEventListener('DOMContentLoaded', function() {
     
     
     /* ========================================
-       CONTACT FORM
+       CONTATO FORM
        ======================================== */
     
     const contactForm = document.querySelector('.contact-form');
     
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Pegar valores dos campos
-            const name = this.querySelector('input[type="text"]').value;
-            const email = this.querySelector('input[type="email"]').value;
-            const phone = this.querySelector('input[type="tel"]').value;
-            const message = this.querySelector('textarea').value;
+            const name = contactForm.querySelector('input[type="text"]')?.value;
+            const email = contactForm.querySelector('input[type="email"]')?.value;
+            const phone = contactForm.querySelector('input[type="tel"]')?.value;
+            const message = contactForm.querySelector('textarea')?.value;
             
-            // Validar campos
+            // Validação simples
             if (!name || !email || !phone || !message) {
-                alert('Por favor, preencha todos os campos!');
+                showAlert('Por favor, preencha todos os campos!', 'error');
                 return;
             }
             
-            // Simular envio (aqui você pode integrar com backend)
-            const submitBtn = this.querySelector('.btn-submit');
-            const originalText = submitBtn.textContent;
+            if (!validateEmail(email)) {
+                showAlert('Por favor, insira um email válido!', 'error');
+                return;
+            }
             
-            submitBtn.textContent = 'Enviando...';
-            submitBtn.disabled = true;
+            // Simular envio
+            const submitBtn = contactForm.querySelector('.btn-submit');
+            const originalText = submitBtn?.textContent;
             
-            setTimeout(function() {
-                alert('Obrigado, ' + name + '! Sua mensagem foi enviada com sucesso. Em breve entraremos em contato.');
+            if (submitBtn) {
+                submitBtn.textContent = 'Enviando...';
+                submitBtn.disabled = true;
+            }
+            
+            setTimeout(() => {
+                showAlert(`Obrigado, ${name}! Sua mensagem foi enviada com sucesso.`, 'success');
                 contactForm.reset();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
+                if (submitBtn) {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
             }, 1500);
         });
     }
+    
+    // Funções auxiliares para o form
+    const validateEmail = (email) => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    };
+    
+    const showAlert = (message, type) => {
+        // Remover alerts anteriores
+        document.querySelectorAll('.custom-alert').forEach(el => el.remove());
+        
+        const alert = document.createElement('div');
+        alert.className = `custom-alert alert-${type}`;
+        alert.textContent = message;
+        alert.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            z-index: 10000;
+            animation: slideIn 0.3s ease;
+            background: ${type === 'success' ? '#4CAF50' : '#f44336'};
+        `;
+        
+        document.body.appendChild(alert);
+        
+        setTimeout(() => {
+            alert.style.animation = 'slideOut 0.3s ease';
+            setTimeout(() => alert.remove(), 300);
+        }, 3000);
+    };
     
     
     /* ========================================
@@ -236,17 +284,16 @@ document.addEventListener('DOMContentLoaded', function() {
        ======================================== */
     
     const statNumbers = document.querySelectorAll('.stat-num');
-    let statsAnimated = false;
     
-    function animateStats() {
-        if (statsAnimated) return;
+    const animateStats = () => {
+        if (statsAnimated || statNumbers.length === 0) return;
         
-        statNumbers.forEach(function(stat) {
+        statNumbers.forEach(stat => {
             const target = parseInt(stat.textContent.replace(/[^0-9]/g, ''));
             const suffix = stat.textContent.replace(/[0-9]/g, '');
             let current = 0;
             const increment = target / 50;
-            const timer = setInterval(function() {
+            const timer = setInterval(() => {
                 current += increment;
                 if (current >= target) {
                     current = target;
@@ -257,61 +304,44 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         statsAnimated = true;
-    }
+    };
     
-    // Animar stats quando o hero estiver visível
-    const heroSection = document.getElementById('home');
-    const statsObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
             if (entry.isIntersecting) {
                 animateStats();
+                statsObserver.unobserve(entry.target);
             }
         });
     }, { threshold: 0.5 });
     
+    const heroSection = document.getElementById('home');
     if (heroSection) {
         statsObserver.observe(heroSection);
     }
     
     
     /* ========================================
-       HEADER TOP HIDE ON SCROLL DOWN
+       HEADER TOP HIDE ON SCROLL
        ======================================== */
     
-    let lastScroll = 0;
     const headerTop = document.querySelector('.header-top');
     
-    window.addEventListener('scroll', function() {
+    const headerTopScroll = () => {
         const currentScroll = window.pageYOffset;
         
-        if (currentScroll > lastScroll && currentScroll > 200) {
-            if (headerTop) {
+        if (headerTop) {
+            if (currentScroll > lastScroll && currentScroll > 200) {
                 headerTop.style.transform = 'translateY(-100%)';
-                headerTop.style.transition = 'transform 0.3s ease';
-            }
-        } else {
-            if (headerTop) {
+            } else {
                 headerTop.style.transform = 'translateY(0)';
             }
         }
         
         lastScroll = currentScroll;
-    });
+    };
     
-    
-    /* ========================================
-       PREVENT DEFAULT FOR BUTTON TYPES
-       ======================================== */
-    
-    // Corrigir botões que tm href="#"
-    document.querySelectorAll('button[href]').forEach(function(btn) {
-        btn.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href === '#') {
-                e.preventDefault();
-            }
-        });
-    });
+    window.addEventListener('scroll', headerTopScroll);
     
     
     /* ========================================
@@ -320,27 +350,26 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const lazyImages = document.querySelectorAll('img[data-src]');
     
-    const imageObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const img = entry.target;
-                img.src = img.dataset.src;
-                img.removeAttribute('data-src');
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                }
                 imageObserver.unobserve(img);
             }
         });
     });
     
-    lazyImages.forEach(function(img) {
-        imageObserver.observe(img);
-    });
+    lazyImages.forEach(img => imageObserver.observe(img));
     
     
     /* ========================================
        SCROLL TO TOP BUTTON
        ======================================== */
     
-    // Criar botão de scroll to top
     const scrollTopBtn = document.createElement('button');
     scrollTopBtn.className = 'scroll-top-btn';
     scrollTopBtn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
@@ -365,7 +394,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     document.body.appendChild(scrollTopBtn);
     
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', () => {
         if (window.scrollY > 500) {
             scrollTopBtn.style.opacity = '1';
             scrollTopBtn.style.visibility = 'visible';
@@ -375,150 +404,108 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    scrollTopBtn.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+    scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
     
     
     /* ========================================
-       SERVICES CARD HOVER EFFECT
+       SERVICES CARD HOVER
        ======================================== */
     
     const serviceCards = document.querySelectorAll('.service-card');
     
-    serviceCards.forEach(function(card) {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px)';
+    serviceCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-10px)';
         });
         
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
         });
     });
     
     
     /* ========================================
-       PRODUCTS ADD TO CART (EXAMPLE)
-       ======================================== */
-    
-    const productLinks = document.querySelectorAll('.product-link');
-    
-    productLinks.forEach(function(link) {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const productName = this.closest('.product-info').querySelector('h3').textContent;
-            
-            // Animação de clique
-            this.innerHTML = '<i class="fa-solid fa-check"></i> Solicitado!';
-            this.style.color = '#4CAF50';
-            
-            setTimeout(function() {
-                link.innerHTML = 'Solicitar Orçamento <i class="fa-solid fa-arrow-right"></i>';
-                link.style.color = '';
-            }, 2000);
-        });
-    });
-    
-    
-    /* ========================================
-       HEADER SOCIAL LINKS
-       ======================================== */
-    
-    const socialLinks = document.querySelectorAll('.header-social a');
-    
-    socialLinks.forEach(function(link) {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Aqui você pode adicionar links reais
-            // Por exemplo: window.open('https://instagram.com/agrofort', '_blank');
-            
-            console.log('Link social clicado: ' + this.querySelector('i').className);
-        });
-    });
-    
-    
-    /* ========================================
-       VIDEO YOUTUBE API
+       VIDEO LAZY LOAD
        ======================================== */
     
     const videoContainer = document.querySelector('.video-container');
     
     if (videoContainer) {
-        // Adicionar lazy load no iframe
         const iframe = videoContainer.querySelector('iframe');
-        const videoSrc = iframe.src;
         
-        iframe.src = '';
-        iframe.dataset.src = videoSrc;
-        
-        // Carregar vídeo apenas quando visível
-        const videoObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    const iframe = entry.target;
-                    if (iframe.dataset.src) {
-                        iframe.src = iframe.dataset.src;
+        if (iframe && iframe.dataset.src) {
+            iframe.src = '';
+            const videoSrc = iframe.dataset.src;
+            
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        iframe.src = videoSrc;
+                        videoObserver.unobserve(iframe);
                     }
-                    videoObserver.unobserve(iframe);
-                }
-            });
-        }, { threshold: 0.5 });
-        
-        videoObserver.observe(iframe);
+                });
+            }, { threshold: 0.5 });
+            
+            videoObserver.observe(iframe);
+        }
     }
-    
-    
-    /* ========================================
-       LOADED CLASS
-       ======================================== */
-    
-    window.addEventListener('load', function() {
-        document.body.classList.add('loaded');
-        
-        // Animar elementos iniciais
-        setTimeout(function() {
-            document.querySelector('.hero-content').style.opacity = '1';
-            document.querySelector('.hero-content').style.transform = 'translateY(0)';
-        }, 300);
-    });
     
     
     /* ========================================
        RESPONSIVE FIXES
        ======================================== */
     
-    function checkMobile() {
+    const checkMobile = () => {
         const isMobile = window.innerWidth < 768;
         
-        // Ajustar tamanho da fonte do título no hero
         const heroTitle = document.querySelector('.hero h1');
         if (heroTitle) {
-            if (isMobile) {
-                heroTitle.style.fontSize = '36px';
-            } else {
-                heroTitle.style.fontSize = '56px';
-            }
+            heroTitle.style.fontSize = isMobile ? '36px' : '56px';
         }
         
-        // Ajustar grid de produtos
         const productsGrid = document.querySelector('.products-grid');
         if (productsGrid) {
-            if (isMobile) {
-                productsGrid.style.gridTemplateColumns = '1fr';
-            } else {
-                productsGrid.style.gridTemplateColumns = 'repeat(3, 1fr)';
-            }
+            productsGrid.style.gridTemplateColumns = isMobile ? '1fr' : 'repeat(3, 1fr)';
         }
-    }
+    };
     
     window.addEventListener('resize', checkMobile);
     checkMobile();
     
     
-    console.log('AgroFort - Site carregado com sucesso!');
+    /* ========================================
+       PRELOADER (OPCIONAL)
+       ======================================== */
+    
+    const preloader = document.querySelector('.preloader');
+    
+    if (preloader) {
+        window.addEventListener('load', () => {
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+                document.body.classList.add('loaded');
+            }, 500);
+        });
+    }
+    
+    
+    /* ========================================
+       KEYBOARD ACCESSIBILITY
+       ======================================== */
+    
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            if (navMenu?.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle?.classList.remove('active');
+            }
+        }
+    });
+    
+    
+    console.log('🚀 AgroFort - Script carregado com sucesso!');
     
 });
