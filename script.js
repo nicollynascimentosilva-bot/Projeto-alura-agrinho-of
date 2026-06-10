@@ -1,235 +1,524 @@
-/* ============================================
-   AGROFORT - JAVASCRIPT PROFISSIONAL
-   ============================================ */
+/* ========================================
+   AGROFORT - JAVASCRIPT PRINCIPAL
+   ======================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
     
-    // ============================================
-    // VARIÁVEIS
-    // ============================================
-    const yearSpan = document.getElementById('year');
-    const header = document.querySelector('.header');
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    const sliderDots = document.querySelectorAll('.hero-slider-nav .dot');
-    const heroSlides = document.querySelectorAll('.hero-slide');
-    const contactForm = document.querySelector('.contact-form');
+    /* ========================================
+       HEADER SCROLL EFFECT
+       ======================================== */
     
-    // ============================================
-    // ANO AUTOMÁTICO
-    // ============================================
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
+    const header = document.querySelector('.header');
+    const navbar = document.querySelector('.navbar');
+    
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+            navbar.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+            navbar.classList.remove('scrolled');
+        }
+    });
+    
+    
+    /* ========================================
+       MOBILE MENU TOGGLE
+       ======================================== */
+    
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // Fechar menu ao clicar em um link
+        navMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
     }
     
-    // ============================================
-    // SLIDER DO HERO
-    // ============================================
-    let currentSlide = 0;
-    const totalSlides = heroSlides.length;
     
-    function changeSlide(index) {
-        // Remove.active de todos
+    /* ========================================
+       HERO SLIDER
+       ======================================== */
+    
+    const heroSlides = document.querySelectorAll('.hero-slide');
+    const sliderDots = document.querySelectorAll('.hero-slider-nav .dot');
+    let currentSlide = 0;
+    let slideInterval;
+    
+    function showSlide(index) {
         heroSlides.forEach(function(slide) {
             slide.classList.remove('active');
         });
+        
         sliderDots.forEach(function(dot) {
             dot.classList.remove('active');
         });
         
-        // Adiciona.active ao atual
         heroSlides[index].classList.add('active');
         sliderDots[index].classList.add('active');
         currentSlide = index;
     }
     
-    // Clique nos dots
-    sliderDots.forEach(function(dot, index) {
-        dot.addEventListener('click', function() {
-            changeSlide(index);
-        });
-    });
+    function nextSlide() {
+        let next = currentSlide + 1;
+        if (next >= heroSlides.length) {
+            next = 0;
+        }
+        showSlide(next);
+    }
     
-    // Auto-slide a cada 5 segundos
-    setInterval(function() {
-        let nextSlide = (currentSlide + 1) % totalSlides;
-        changeSlide(nextSlide);
-    }, 5000);
+    function startSlider() {
+        slideInterval = setInterval(nextSlide, 5000);
+    }
     
-    // ============================================
-    // ANIMAÇÃO DOS NÚMEROS
-    // ============================================
-    function animateNumbers() {
-        const numbers = document.querySelectorAll('.stat-num');
+    function stopSlider() {
+        clearInterval(slideInterval);
+    }
+    
+    // Iniciar slider automaticamente
+    if (heroSlides.length > 0) {
+        startSlider();
         
-        numbers.forEach(function(num) {
-            const target = parseInt(num.getAttribute('data-target'));
-            const duration = 2000;
-            const step = target / (duration / 16);
-            let current = 0;
-            
-            function update() {
-                current += step;
-                if (current < target) {
-                    num.textContent = Math.floor(current);
-                    requestAnimationFrame(update);
-                } else {
-                    num.textContent = target;
-                }
-            }
-            
-            update();
+        // Controle manual pelos dots
+        sliderDots.forEach(function(dot, index) {
+            dot.addEventListener('click', function() {
+                stopSlider();
+                showSlide(index);
+                startSlider();
+            });
         });
+        
+        // Pausar ao passar o mouse
+        const heroSection = document.querySelector('.hero');
+        heroSection.addEventListener('mouseenter', stopSlider);
+        heroSection.addEventListener('mouseleave', startSlider);
     }
     
-    // Iniciar números quando rolar até o hero
-    const heroSection = document.querySelector('.hero');
-    const heroStats = document.querySelector('.hero-stats');
-    let numbersAnimated = false;
     
-    window.addEventListener('scroll', function() {
-        if (!numbersAnimated && heroStats) {
-            const rect = heroStats.getBoundingClientRect();
-            if (rect.top < window.innerHeight - 100) {
-                animateNumbers();
-                numbersAnimated = true;
-            }
-        }
-    });
+    /* ========================================
+       ACTIVE NAV LINK ON SCROLL
+       ======================================== */
     
-    // ============================================
-    // HEADER AO ROLAR
-    // ============================================
-    window.addEventListener('scroll', function() {
-        if (header) {
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        }
-    });
-    
-    // ============================================
-    // MENU MOBILE
-    // ============================================
-    if (menuToggle) {
-        menuToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-        });
-    }
-    
-    // ============================================
-    // SMOOTH SCROLL
-    // ============================================
-    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const target = document.querySelector(targetId);
-            
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-                
-                // Fechar menu mobile
-                if (navMenu) {
-                    navMenu.classList.remove('active');
-                }
-            }
-        });
-    });
-    
-    // ============================================
-    // LINK ATIVO AO ROLAR
-    // ============================================
     const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-menu a');
+    const navLinks = document.querySelectorAll('.nav-menu li a');
     
-    window.addEventListener('scroll', function() {
-        let current = '';
+    function highlightNavOnScroll() {
+        const scrollPos = window.scrollY + 150;
         
         sections.forEach(function(section) {
             const sectionTop = section.offsetTop;
-            if (window.scrollY >= sectionTop - 200) {
-                current = section.getAttribute('id');
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                navLinks.forEach(function(link) {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + sectionId) {
+                        link.classList.add('active');
+                    }
+                });
             }
         });
-        
-        navLinks.forEach(function(link) {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === '#' + current) {
-                link.classList.add('active');
+    }
+    
+    window.addEventListener('scroll', highlightNavOnScroll);
+    
+    
+    /* ========================================
+       SCROLL ANIMATIONS
+       ======================================== */
+    
+    const animateElements = document.querySelectorAll('.about-card, .service-card, .product-card');
+    
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    animateElements.forEach(function(el, index) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'all 0.6s ease ' + (index * 0.1) + 's';
+        observer.observe(el);
+    });
+    
+    // Adicionar classe animate via JS
+    document.addEventListener('scroll', function() {
+        animateElements.forEach(function(el) {
+            if (el.classList.contains('animate')) {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
             }
         });
     });
     
-    // ============================================
-    // FORMULÁRIO DE CONTATO
-    // ============================================
+    
+    /* ========================================
+       SMOOTH SCROLL
+       ======================================== */
+    
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const headerHeight = header.offsetHeight;
+                const targetPosition = target.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    
+    /* ========================================
+       CONTACT FORM
+       ======================================== */
+    
+    const contactForm = document.querySelector('.contact-form');
+    
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const btn = contactForm.querySelector('button[type="submit"]');
-            const originalText = btn.innerHTML;
+            // Pegar valores dos campos
+            const name = this.querySelector('input[type="text"]').value;
+            const email = this.querySelector('input[type="email"]').value;
+            const phone = this.querySelector('input[type="tel"]').value;
+            const message = this.querySelector('textarea').value;
             
-            btn.innerHTML = '<i class="fa-solid fa-check"></i> Mensagem Enviada!';
-            btn.style.background = 'var(--primary-dark)';
+            // Validar campos
+            if (!name || !email || !phone || !message) {
+                alert('Por favor, preencha todos os campos!');
+                return;
+            }
+            
+            // Simular envio (aqui você pode integrar com backend)
+            const submitBtn = this.querySelector('.btn-submit');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Enviando...';
+            submitBtn.disabled = true;
             
             setTimeout(function() {
-                btn.innerHTML = originalText;
-                btn.style.background = '';
+                alert('Obrigado, ' + name + '! Sua mensagem foi enviada com sucesso. Em breve entraremos em contato.');
                 contactForm.reset();
-            }, 3000);
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
         });
     }
     
-    // ============================================
-    // ANIMAÇÃO DE REVEAL
-    // ============================================
-    function reveal() {
-        const cards = document.querySelectorAll('.about-card, .service-card, .product-card');
+    
+    /* ========================================
+       STATS COUNTER ANIMATION
+       ======================================== */
+    
+    const statNumbers = document.querySelectorAll('.stat-num');
+    let statsAnimated = false;
+    
+    function animateStats() {
+        if (statsAnimated) return;
         
-        cards.forEach(function(card) {
-            const cardTop = card.getBoundingClientRect().top;
-            const cardVisible = 150;
-            
-            if (cardTop < window.innerHeight - cardVisible) {
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
+        statNumbers.forEach(function(stat) {
+            const target = parseInt(stat.textContent.replace(/[^0-9]/g, ''));
+            const suffix = stat.textContent.replace(/[0-9]/g, '');
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(function() {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                stat.textContent = Math.floor(current) + suffix;
+            }, 30);
+        });
+        
+        statsAnimated = true;
+    }
+    
+    // Animar stats quando o hero estiver visível
+    const heroSection = document.getElementById('home');
+    const statsObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                animateStats();
             }
         });
+    }, { threshold: 0.5 });
+    
+    if (heroSection) {
+        statsObserver.observe(heroSection);
     }
     
-    // Estilo inicial para as animações
-    document.querySelectorAll('.about-card, .service-card, .product-card').forEach(function(card) {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(50px)';
-        card.style.transition = 'all 0.6s ease';
+    
+    /* ========================================
+       HEADER TOP HIDE ON SCROLL DOWN
+       ======================================== */
+    
+    let lastScroll = 0;
+    const headerTop = document.querySelector('.header-top');
+    
+    window.addEventListener('scroll', function() {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > lastScroll && currentScroll > 200) {
+            if (headerTop) {
+                headerTop.style.transform = 'translateY(-100%)';
+                headerTop.style.transition = 'transform 0.3s ease';
+            }
+        } else {
+            if (headerTop) {
+                headerTop.style.transform = 'translateY(0)';
+            }
+        }
+        
+        lastScroll = currentScroll;
     });
     
-    window.addEventListener('scroll', reveal);
-    reveal();
     
-    // ============================================
-    // EFEITO PARALLAX NO HERO
-    // ============================================
+    /* ========================================
+       PREVENT DEFAULT FOR BUTTON TYPES
+       ======================================== */
+    
+    // Corrigir botões que tm href="#"
+    document.querySelectorAll('button[href]').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === '#') {
+                e.preventDefault();
+            }
+        });
+    });
+    
+    
+    /* ========================================
+       LAZY LOAD IMAGES
+       ======================================== */
+    
+    const lazyImages = document.querySelectorAll('img[data-src]');
+    
+    const imageObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+                imageObserver.unobserve(img);
+            }
+        });
+    });
+    
+    lazyImages.forEach(function(img) {
+        imageObserver.observe(img);
+    });
+    
+    
+    /* ========================================
+       SCROLL TO TOP BUTTON
+       ======================================== */
+    
+    // Criar botão de scroll to top
+    const scrollTopBtn = document.createElement('button');
+    scrollTopBtn.className = 'scroll-top-btn';
+    scrollTopBtn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
+    scrollTopBtn.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 18px;
+        box-shadow: 0 4px 20px rgba(76, 175, 80, 0.4);
+        z-index: 9999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    `;
+    
+    document.body.appendChild(scrollTopBtn);
+    
     window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const heroBg = document.querySelector('.hero-slider');
-        
-        if (heroBg) {
-            heroBg.style.transform = 'translateY(' + (scrolled * 0.5) + 'px)';
+        if (window.scrollY > 500) {
+            scrollTopBtn.style.opacity = '1';
+            scrollTopBtn.style.visibility = 'visible';
+        } else {
+            scrollTopBtn.style.opacity = '0';
+            scrollTopBtn.style.visibility = 'hidden';
         }
     });
     
-    // ============================================
-    // LOGGER
-    // ============================================
-    console.log('%c AGROFORT ', 'color: #2ecc71; font-size: 24px; font-weight: bold;');
-    console.log('Site carregado com sucesso! 🚀');
-    console.log('Tema: Agricultura Sustentável');
+    scrollTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    
+    /* ========================================
+       SERVICES CARD HOVER EFFECT
+       ======================================== */
+    
+    const serviceCards = document.querySelectorAll('.service-card');
+    
+    serviceCards.forEach(function(card) {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+    
+    
+    /* ========================================
+       PRODUCTS ADD TO CART (EXAMPLE)
+       ======================================== */
+    
+    const productLinks = document.querySelectorAll('.product-link');
+    
+    productLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const productName = this.closest('.product-info').querySelector('h3').textContent;
+            
+            // Animação de clique
+            this.innerHTML = '<i class="fa-solid fa-check"></i> Solicitado!';
+            this.style.color = '#4CAF50';
+            
+            setTimeout(function() {
+                link.innerHTML = 'Solicitar Orçamento <i class="fa-solid fa-arrow-right"></i>';
+                link.style.color = '';
+            }, 2000);
+        });
+    });
+    
+    
+    /* ========================================
+       HEADER SOCIAL LINKS
+       ======================================== */
+    
+    const socialLinks = document.querySelectorAll('.header-social a');
+    
+    socialLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Aqui você pode adicionar links reais
+            // Por exemplo: window.open('https://instagram.com/agrofort', '_blank');
+            
+            console.log('Link social clicado: ' + this.querySelector('i').className);
+        });
+    });
+    
+    
+    /* ========================================
+       VIDEO YOUTUBE API
+       ======================================== */
+    
+    const videoContainer = document.querySelector('.video-container');
+    
+    if (videoContainer) {
+        // Adicionar lazy load no iframe
+        const iframe = videoContainer.querySelector('iframe');
+        const videoSrc = iframe.src;
+        
+        iframe.src = '';
+        iframe.dataset.src = videoSrc;
+        
+        // Carregar vídeo apenas quando visível
+        const videoObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    const iframe = entry.target;
+                    if (iframe.dataset.src) {
+                        iframe.src = iframe.dataset.src;
+                    }
+                    videoObserver.unobserve(iframe);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        videoObserver.observe(iframe);
+    }
+    
+    
+    /* ========================================
+       LOADED CLASS
+       ======================================== */
+    
+    window.addEventListener('load', function() {
+        document.body.classList.add('loaded');
+        
+        // Animar elementos iniciais
+        setTimeout(function() {
+            document.querySelector('.hero-content').style.opacity = '1';
+            document.querySelector('.hero-content').style.transform = 'translateY(0)';
+        }, 300);
+    });
+    
+    
+    /* ========================================
+       RESPONSIVE FIXES
+       ======================================== */
+    
+    function checkMobile() {
+        const isMobile = window.innerWidth < 768;
+        
+        // Ajustar tamanho da fonte do título no hero
+        const heroTitle = document.querySelector('.hero h1');
+        if (heroTitle) {
+            if (isMobile) {
+                heroTitle.style.fontSize = '36px';
+            } else {
+                heroTitle.style.fontSize = '56px';
+            }
+        }
+        
+        // Ajustar grid de produtos
+        const productsGrid = document.querySelector('.products-grid');
+        if (productsGrid) {
+            if (isMobile) {
+                productsGrid.style.gridTemplateColumns = '1fr';
+            } else {
+                productsGrid.style.gridTemplateColumns = 'repeat(3, 1fr)';
+            }
+        }
+    }
+    
+    window.addEventListener('resize', checkMobile);
+    checkMobile();
+    
+    
+    console.log('AgroFort - Site carregado com sucesso!');
+    
 });
