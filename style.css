@@ -12,13 +12,11 @@
     --dark-light: #2D2D2D;
     --light: #FFFFFF;
     --light-gray: #F5F5F5;
-    --gray: #9E9E9E;
     --text: #424242;
     --text-light: #757575;
     --shadow: 0 10px 40px rgba(0,0,0,0.1);
     --shadow-hover: 0 20px 60px rgba(0,0,0,0.15);
     --radius: 12px;
-    --radius-sm: 8px;
     --transition: all 0.3s ease;
 }
 
@@ -75,10 +73,7 @@ button {
     color: var(--light);
 }
 
-/* ======================================== */
 /* HEADER */
-/* ======================================== */
-
 .header {
     position: fixed;
     top: 0;
@@ -87,7 +82,6 @@ button {
     z-index: 1000;
     background: rgba(255,255,255,0.95);
     backdrop-filter: blur(10px);
-    transition: var(--transition);
     box-shadow: 0 2px 20px rgba(0,0,0,0.05);
 }
 
@@ -121,10 +115,7 @@ button {
     display: flex;
     align-items: center;
     gap: 6px;
-}
-
-.header-info i {
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .header-social {
@@ -175,11 +166,42 @@ button {
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, var(--primary), var(--accent));
-    border-radius: var(--radius-sm);
+    border-radius: 8px;
     color: var(--light);
     font-size: 20px;
 }
 
 .logo-text {
     display: flex;
-    flex-direction:
+    flex-direction: column;
+}
+
+.logo-text span {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.1;
+}
+
+.logo-text span span {
+    color: var(--primary);
+}
+
+.logo-text small {
+    font-size: 10px;
+    color: var(--text-light);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-menu li a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
