@@ -174,7 +174,6 @@ body {
     color: #1b4332;
 }
 
-/* Galeria de Fotos Ajustada */
 .gallery-section {
     padding: 60px 10%;
     text-align: center;
@@ -216,7 +215,6 @@ body {
     box-shadow: 0 12px 20px rgba(27, 67, 50, 0.2);
 }
 
-/* Classe JS para a imagem clicada */
 .img-active {
     outline: 4px solid #52b788;
     outline-offset: 6px;
@@ -271,11 +269,50 @@ footer {
     background-color: #1b4332;
     color: white;
     text-align: center;
-    padding: 20px;
+    padding: 30px 20px;
     font-size: 14px;
 }
 
-/* Responsividade Básica para Celular */
+.footer-socials {
+    margin-bottom: 15px;
+}
+
+.footer-socials a {
+    color: white;
+    font-size: 20px;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-socials a:hover {
+    color: #52b788;
+}
+
+.whatsapp-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    z-index: 9999;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.1);
+    background-color: #1ebd58;
+}
+
 @media (max-width: 768px) {
     .navbar { flex-direction: column; gap: 15px; }
     .hero h1 { font-size: 32px; }
