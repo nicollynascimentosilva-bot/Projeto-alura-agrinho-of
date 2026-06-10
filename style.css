@@ -486,4 +486,205 @@ input, textarea, select {
     padding: 16px 32px;
     border-radius: 30px;
     font-weight: 600;
-    font-size
+    font-size: 15px;
+    border: 2px solid rgba(255,255,255,0.3);
+    transition: var(--transition);
+}
+
+.btn-outline:hover {
+    background: var(--light);
+    color: var(--dark);
+    border-color: var(--light);
+    transform: translateY(-3px);
+}
+
+.hero-stats {
+    display: flex;
+    gap: 50px;
+}
+
+.hero-stat {
+    text-align: left;
+}
+
+.hero-stat-num {
+    font-family: var(--font-display);
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--light);
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.hero-stat-num span {
+    color: var(--accent);
+    font-size: 28px;
+}
+
+.hero-stat-text {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero-slider-nav {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.hero-slider-nav .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+}
+
+.hero-slider-nav .dot.active {
+    background: var(--primary);
+    transform: scale(1.2);
+}
+
+/* ========================================
+   ANIMAÇÕES
+   ======================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.animate {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+   ======================================== */
+
+@media (max-width: 1024px) {
+    .hero h1 {
+        font-size: 48px;
+    }
+    
+    .hero-stats {
+        gap: 30px;
+    }
+    
+    .hero-stat-num {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 350px;
+        height: 100vh;
+        background: var(--light);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 100px 40px 40px;
+        gap: 20px;
+        transition: var(--transition);
+        box-shadow: var(--shadow-lg);
+    }
+    
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    .nav-menu li a {
+        font-size: 18px;
+    }
+    
+    .header-top {
+        display: none;
+    }
+    
+    .hero {
+        padding-top: 80px;
+    }
+    
+    .hero h1 {
+        font-size: 36px;
+        letter-spacing: -0.5px;
+    }
+    
+    .hero p {
+        font-size: 16px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+    }
+    
+    .btn-primary, .btn-outline {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .hero-stats {
+        gap: 25px;
+        flex-wrap: wrap;
+    }
+    
+    .hero-stat-num {
+        font-size: 28px;
+    }
+    
+    .hero-stat-text {
+        font-size: 12px;
+    }
+    
+    .logo-text small {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 28px;
+    }
+    
+    .hero-badge {
+        font-size: 11px;
+        padding: 8px 14px;
+    }
+}
