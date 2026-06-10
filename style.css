@@ -1,12 +1,12 @@
-/* ========================================
-   AGROFORTE - CSS COMPLETO
-   ======================================== */
+/* ======================================== */
+/* AGROFORTE - CSS COMPLETO */
+/* ======================================== */
 
 :root {
-    --primary: #4CAF50;
-    --primary-dark: #388E3C;
-    --primary-light: #C8E6C9;
-    --secondary: #2E7D32;
+    --primary: #2E7D32;
+    --primary-dark: #1B5E20;
+    --primary-light: #A5D6A7;
+    --secondary: #43A047;
     --accent: #8BC34A;
     --dark: #1B1B1B;
     --dark-light: #2D2D2D;
@@ -75,9 +75,9 @@ button {
     color: var(--light);
 }
 
-/* ========================================
-   HEADER
-   ======================================== */
+/* ======================================== */
+/* HEADER */
+/* ======================================== */
 
 .header {
     position: fixed;
@@ -100,7 +100,7 @@ button {
 }
 
 .header-top {
-    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    background: linear-gradient(90deg, var(--primary), var(--primary-dark));
     padding: 8px 0;
     font-size: 13px;
     color: var(--light);
@@ -182,120 +182,4 @@ button {
 
 .logo-text {
     display: flex;
-    flex-direction: column;
-}
-
-.logo-text span {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--dark);
-    line-height: 1.1;
-}
-
-.logo-text span span {
-    color: var(--primary);
-}
-
-.logo-text small {
-    font-size: 10px;
-    color: var(--text-light);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    font-weight: 500;
-}
-
-.nav-menu {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-}
-
-.nav-menu li a {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text);
-    position: relative;
-    padding: 5px 0;
-    transition: var(--transition);
-}
-
-.nav-menu li a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--primary);
-    transition: var(--transition);
-}
-
-.nav-menu li a:hover::after,
-.nav-menu li a.active::after {
-    width: 100%;
-}
-
-.nav-menu li a:hover,
-.nav-menu li a.active {
-    color: var(--primary);
-}
-
-.btn-contact {
-    background: var(--primary);
-    color: var(--light);
-    padding: 10px 22px;
-    border-radius: 30px;
-    font-weight: 600;
-    font-size: 14px;
-}
-
-.btn-contact:hover {
-    background: var(--primary-dark);
-    color: var(--light);
-}
-
-.btn-contact::after {
-    display: none;
-}
-
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    padding: 8px;
-    cursor: pointer;
-}
-
-.menu-toggle span {
-    width: 25px;
-    height: 2px;
-    background: var(--dark);
-    transition: var(--transition);
-    border-radius: 2px;
-}
-
-/* ========================================
-   HERO SECTION
-   ======================================== */
-
-.hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding-top: 80px;
-    overflow: hidden;
-}
-
-.hero-slider {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-
-.hero-slide {
-    position: absolute;
-    top:
+    flex-direction:
