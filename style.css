@@ -1,3 +1,4 @@
+/* Configurações Gerais */
 * {
     margin: 0;
     padding: 0;
@@ -11,6 +12,7 @@ body {
     scroll-behavior: smooth;
 }
 
+/* Menu de Navegação */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -45,13 +47,14 @@ body {
     color: white;
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
     color: #52b788;
 }
 
+/* Seção Principal (Hero) */
 .hero {
     height: 70vh;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://unsplash.com') no-repeat center center/cover;
@@ -83,13 +86,14 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-    transition: background 0.3s;
+    transition: background-color 0.3s ease;
 }
 
 .hero button:hover {
     background-color: #40916c;
 }
 
+/* Seção Sobre */
 .about-section {
     padding: 60px 10%;
     background-color: white;
@@ -131,6 +135,7 @@ body {
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
+/* Seção Recursos (Cards) */
 .features {
     padding: 60px 10%;
     text-align: center;
@@ -156,7 +161,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     border-top: 5px solid #52b788;
-    transition: transform 0.3s;
+    transition: transform 0.3s ease;
 }
 
 .card:hover {
@@ -174,6 +179,7 @@ body {
     color: #1b4332;
 }
 
+/* Galeria de Fotos */
 .gallery-section {
     padding: 60px 10%;
     text-align: center;
@@ -215,12 +221,14 @@ body {
     box-shadow: 0 12px 20px rgba(27, 67, 50, 0.2);
 }
 
+/* Classe de Destaque da Imagem (Ativada via JS) */
 .img-active {
     outline: 4px solid #52b788;
     outline-offset: 6px;
     transform: scale(1.02);
 }
 
+/* Seção de Contato */
 .contact {
     background-color: #d8f3dc;
     padding: 60px 10%;
@@ -247,6 +255,11 @@ body {
     border: 1px solid #b7e4c7;
     border-radius: 5px;
     font-size: 16px;
+    outline: none;
+}
+
+#agroForm input:focus {
+    border-color: #52b788;
 }
 
 #agroForm button {
@@ -258,13 +271,14 @@ body {
     font-size: 16px;
     cursor: pointer;
     font-weight: bold;
-    transition: background 0.3s;
+    transition: background-color 0.3s ease;
 }
 
 #agroForm button:hover {
     background-color: #2d6a4f;
 }
 
+/* Rodapé e Redes Sociais */
 footer {
     background-color: #1b4332;
     color: white;
@@ -282,13 +296,14 @@ footer {
     font-size: 20px;
     margin: 0 10px;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
 }
 
 .footer-socials a:hover {
     color: #52b788;
 }
 
+/* Botão Flutuante do WhatsApp */
 .whatsapp-btn {
     position: fixed;
     bottom: 20px;
@@ -313,8 +328,11 @@ footer {
     background-color: #1ebd58;
 }
 
+/* Telas de Celular (Responsividade) */
 @media (max-width: 768px) {
     .navbar { flex-direction: column; gap: 15px; }
     .hero h1 { font-size: 32px; }
+    .nav-links { width: 100%; justify-content: center; }
     .nav-links li { margin: 0 10px; }
+    .about-section, .features, .gallery-section, .contact { padding: 40px 5%; }
 }
