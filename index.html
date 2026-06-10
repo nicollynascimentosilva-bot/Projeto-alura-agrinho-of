@@ -1,311 +1,65 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroForte - Agricultura Sustentável</title>
-    
-    <!-- Fontes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Ícones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- CSS -->
+    <title>Agro Forte - Agricultura Sustentável</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- HEADER -->
-    <header class="header" id="header">
-        <div class="header-top">
-            <div class="container">
-                <div class="header-info">
-                    <span><i class="fas fa-phone-alt"></i> (11) 99999-9999</span>
-                    <span><i class="fas fa-envelope"></i> contato@agroforte.com.br</span>
-                </div>
-                <div class="header-social">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-        </div>
-        
-        <nav class="navbar">
-            <div class="container">
-                <a href="#home" class="logo">
-                    <div class="logo-icon"><i class="fas fa-leaf"></i></div>
-                    <div class="logo-text">
-                        <span>Agro<span>Forte</span></span>
-                        <small>Sustentável</small>
-                    </div>
-                </a>
-                
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="#home" class="active">Início</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#video">Vídeos</a></li>
-                    <li><a href="#contato" class="btn-contact">Contato</a></li>
-                </ul>
-                
-                <div class="menu-toggle" id="menuToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
+    <header class="navbar">
+        <div class="logo">Agro<span>Forte</span></div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#beneficios">Benefícios</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
         </nav>
     </header>
 
-    <!-- HERO -->
-    <section class="hero" id="home">
-        <div class="hero-slider">
-            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1920')"></div>
-            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed845ef?w=1920')"></div>
-            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=1920')"></div>
-        </div>
-        
+    <section id="inicio" class="hero">
         <div class="hero-content">
-            <div class="container">
-                <div class="hero-badge">
-                    <span class="badge-dot"></span>
-                    Agricultura Sustentável
-                </div>
-                <h1>Cultivando o <span>Futuro</span><br>com Sustentabilidade</h1>
-                <p>Produção agrícola responsável para um mundo melhor. Tecnologia e natureza trabalhando juntas.</p>
-                
-                <div class="hero-buttons">
-                    <a href="#servicos" class="btn-primary">
-                        Nossos Serviços
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="#video" class="btn-outline">
-                        <i class="fas fa-play"></i>
-                        Ver Vídeos
-                    </a>
-                </div>
-                
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <div class="hero-stat-num">15<span>+</span></div>
-                        <div class="hero-stat-text">Anos de Experiência</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-num">3K<span>+</span></div>
-                        <div class="hero-stat-text">Produtores</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-num">50<span>+</span></div>
-                        <div class="hero-stat-text">Parcerias</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="hero-slider-nav">
-            <button class="dot active" data-slide="0"></button>
-            <button class="dot" data-slide="1"></button>
-            <button class="dot" data-slide="2"></button>
+            <h1>O Futuro da Agricultura é Sustentável</h1>
+            <p>Unindo a força do campo com a preservação do meio ambiente para alimentar o mundo de forma consciente.</p>
+            <button onclick="scrollToSection('beneficios')">Saiba Mais</button>
         </div>
     </section>
 
-    <!-- SOBRE -->
-    <section class="section about" id="sobre">
-        <div class="container">
-            <div class="section-title">
-                <h2>Quem Somos</h2>
-                <div class="line"></div>
+    <section id="beneficios" class="features">
+        <h2>Nossos Pilares Sustentáveis</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Uso da Água</h3>
+                <p>Sistemas de irrigação gota a gota que reduzem o desperdício em até 60%.</p>
             </div>
-            
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1592982537447-6f2a33396ab7?w=800" alt="Agricultura Sustentável">
-                </div>
-                <div class="about-text">
-                    <h3>Compromisso com o Futuro</h3>
-                    <p>Somos uma empresa dedicada à agricultura sustentável, buscando sempre as melhores práticas para produzir alimentos de qualidade sem comprometer o meio ambiente.</p>
-                    <p>Nossa missão é capacitar produtores rurais com tecnologia e conhecimento, promovendo uma cadeia produtiva mais eficiente e sustentável.</p>
-                    
-                    <div class="about-features">
-                        <div class="feature">
-                            <i class="fas fa-recycle"></i>
-                            <span>Produção Sustentável</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-seedling"></i>
-                            <span>Orgânicos e Naturais</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-tree"></i>
-                            <span>Preservação Ambiental</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="card">
+                <h3>Solo Vivo</h3>
+                <p>Rotação de culturas e adubação orgânica para manter a terra fértil.</p>
+            </div>
+            <div class="card">
+                <h3>Tecnologia Verde</h3>
+                <p>Drones e sensores que otimizam o plantio e evitam defensivos químicos.</p>
             </div>
         </div>
     </section>
 
-    <!-- SERVIÇOS -->
-    <section class="section services" id="servicos">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nossos Serviços</h2>
-                <div class="line"></div>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-tractor"></i></div>
-                    <h3>Máquinas Agrícolas</h3>
-                    <p>Equipamentos modernos para aumentar sua produtividade no campo.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-seedling"></i></div>
-                    <h3>Sementes Premium</h3>
-                    <p>Sementes de alta qualidade para cada tipo de cultura.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-flask"></i></div>
-                    <h3>Análise de Solo</h3>
-                    <p>Laboratório completo para conhecer seu terreno.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-droplet"></i></div>
-                    <h3>Irrigação</h3>
-                    <p>Sistemas inteligentes para economia de água.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-users"></i></div>
-                    <h3>Consultoria</h3>
-                    <p>Especialistas prontos para orientar sua produção.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-truck"></i></div>
-                    <h3>Logística</h3>
-                    <p>Transporte para seus produtos cheguem ao mercado.</p>
-                </div>
-            </div>
-        </div>
+    <section id="contato" class="contact">
+        <h2>Fale Conosco</h2>
+        <p>Junte-se à revolução do agro sustentável.</p>
+        <form id="agroForm">
+            <input type="text" id="nome" placeholder="Seu Nome" required>
+            <input type="email" id="email" placeholder="Seu E-mail" required>
+            <button type="submit">Enviar Mensagem</button>
+        </form>
     </section>
 
-    <!-- VÍDEOS -->
-    <section class="section video-section" id="video">
-        <div class="container">
-            <div class="section-title">
-                <h2>Vídeos sobre Agro</h2>
-                <p>Assista conteúdos exclusivos sobre agricultura sustentável</p>
-            </div>
-            
-            <div class="video-grid">
-                <div class="video-card">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/DjTODcpXjN4" allowfullscreen></iframe>
-                    </div>
-                    <h3>Agricultura Sustentável no Brasil</h3>
-                    <p>Conheça práticas sustentáveis que estão revolucionando o campo.</p>
-                </div>
-                
-                <div class="video-card">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/lXZgXOuYZH0" allowfullscreen></iframe>
-                    </div>
-                    <h3>Tecnologia no Campo</h3>
-                    <p>Como a tecnologia está transformando a agricultura brasileira.</p>
-                </div>
-                
-                <div class="video-card">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/8j8N6r8qVjQ" allowfullscreen></iframe>
-                    </div>
-                    <h3>Orgânicos e Saúde</h3>
-                    <p>A importância dos alimentos orgânicos para a saúde.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTATO -->
-    <section class="section contact" id="contato">
-        <div class="container">
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Fale Conosco</h3>
-                    <p>Entre em contato. Nossa equipe está pronta para atender você!</p>
-                    
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Rua do Agro, 1000 - São Paulo, SP</span>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-phone-alt"></i>
-                        <span>(11) 99999-9999</span>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>contato@agroforte.com.br</span>
-                    </div>
-                    <div class="info-item">
-                        <i class="fab fa-whatsapp"></i>
-                        <span>(11) 99999-9999</span>
-                    </div>
-                </div>
-                
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" name="nome" placeholder="Seu Nome" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Seu E-mail" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" name="telefone" placeholder="Seu Telefone" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="mensagem" rows="5" placeholder="Sua Mensagem" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary btn-submit">
-                        Enviar Mensagem
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <i class="fas fa-leaf"></i>
-                    <span>Agro<span>Forte</span></span>
-                </div>
-                <p>&copy; 2024 AgroForte. Todos os direitos reservados.</p>
-                <div class="footer-social">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-        </div>
+    <footer>
+        <p>&copy; 2026 Agro Forte. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- SCROLL TOP -->
-    <button class="scroll-top" id="scrollTop">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- JS -->
     <script src="script.js"></script>
 </body>
 </html>
