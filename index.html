@@ -65,18 +65,19 @@
         }
 
         .hero {
-            height: 70vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://unsplash.com') no-repeat center center/cover;
+            height: 60vh;
+            background-color: #2d6a4f;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
             color: white;
             padding: 0 20px;
+            border-bottom: 5px solid #52b788;
         }
 
         .hero h1 {
-            font-size: 48px;
+            font-size: 44px;
             margin-bottom: 20px;
         }
 
@@ -84,6 +85,7 @@
             font-size: 18px;
             max-width: 600px;
             margin: 0 auto 30px auto;
+            color: #d8f3dc;
         }
 
         .hero button {
@@ -105,18 +107,7 @@
         .about-section {
             padding: 60px 10%;
             background-color: white;
-        }
-
-        .about-container {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .about-text {
-            flex: 1;
-            min-width: 300px;
+            text-align: center;
         }
 
         .about-text h2 {
@@ -129,18 +120,8 @@
             font-size: 16px;
             line-height: 1.6;
             color: #555;
-        }
-
-        .about-image {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .about-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .features {
@@ -186,62 +167,103 @@
             color: #1b4332;
         }
 
-        .gallery-section {
+        /* SEÇÃO DO QUIZ INTERATIVO */
+        .quiz-section {
             padding: 60px 10%;
-            text-align: center;
             background-color: white;
+            text-align: center;
         }
 
-        .gallery-section h2 {
+        .quiz-section h2 {
             color: #1b4332;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
 
-        .gallery-subtitle {
+        .quiz-subtitle {
             color: #666;
             margin-bottom: 30px;
-            font-size: 14px;
         }
 
-        .gallery-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .gallery-img {
-            width: 100%;
-            max-width: 320px;
-            height: 240px;
-            object-fit: cover;
+        .quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #f4f7f5;
+            padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+
+        .quiz-question {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1b4332;
+        }
+
+        .quiz-options {
+            list-style: none;
+        }
+
+        .quiz-options li {
+            margin-bottom: 12px;
+        }
+
+        .quiz-options label {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background-color: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
             cursor: pointer;
-            transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
+            transition: all 0.2s;
         }
 
-        .gallery-img:hover {
-            transform: scale(1.05) translateY(-5px);
-            filter: brightness(1.05);
-            box-shadow: 0 12px 20px rgba(27, 67, 50, 0.2);
+        .quiz-options label:hover {
+            border-color: #52b788;
+            background-color: #f1f9f5;
         }
 
-        .img-active {
-            outline: 4px solid #52b788;
-            outline-offset: 6px;
-            transform: scale(1.02);
+        .quiz-options input {
+            margin-right: 15px;
+            accent-color: #52b788;
         }
+
+        .quiz-btn {
+            margin-top: 20px;
+            width: 100%;
+            padding: 15px;
+            background-color: #52b788;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .quiz-btn:hover {
+            background-color: #40916c;
+        }
+
+        .quiz-result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 6px;
+            font-weight: bold;
+            text-align: center;
+            display: none;
+        }
+
+        .success { background-color: #d8f3dc; color: #1b4332; }
+        .error { background-color: #f8d7da; color: #721c24; }
 
         .contact {
             background-color: #d8f3dc;
             padding: 60px 10%;
             text-align: center;
-        }
-
-        .contact h2 {
-            color: #1b4332;
-            margin-bottom: 10px;
         }
 
         #agroForm {
@@ -273,10 +295,6 @@
             transition: background 0.3s;
         }
 
-        #agroForm button:hover {
-            background-color: #2d6a4f;
-        }
-
         footer {
             background-color: #1b4332;
             color: white;
@@ -293,13 +311,10 @@
             color: white;
             font-size: 20px;
             margin: 0 10px;
-            text-decoration: none;
             transition: color 0.3s;
         }
 
-        .footer-socials a:hover {
-            color: #52b788;
-        }
+        .footer-socials a:hover { color: #52b788; }
 
         .whatsapp-btn {
             position: fixed;
@@ -314,16 +329,12 @@
             justify-content: center;
             align-items: center;
             font-size: 30px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             z-index: 9999;
-            transition: transform 0.3s ease, background-color 0.3s ease;
+            transition: transform 0.3s;
         }
 
-        .whatsapp-btn:hover {
-            transform: scale(1.1);
-            background-color: #1ebd58;
-        }
+        .whatsapp-btn:hover { transform: scale(1.1); }
 
         @media (max-width: 768px) {
             .navbar { flex-direction: column; gap: 15px; }
@@ -334,7 +345,6 @@
 </head>
 <body>
 
-    <!-- ESTRUTURA HTML -->
     <header class="navbar">
         <div class="logo">Agro<span>Forte</span></div>
         <nav>
@@ -342,7 +352,7 @@
                 <li><a href="#inicio" onclick="scrollToSection('inicio')">Início</a></li>
                 <li><a href="#sobre" onclick="scrollToSection('sobre')">Sobre</a></li>
                 <li><a href="#beneficios" onclick="scrollToSection('beneficios')">Benefícios</a></li>
-                <li><a href="#galeria" onclick="scrollToSection('galeria')">Galeria</a></li>
+                <li><a href="#quiz" onclick="scrollToSection('quiz')">Quiz Sustentável</a></li>
                 <li><a href="#contato" onclick="scrollToSection('contato')">Contato</a></li>
             </ul>
         </nav>
@@ -362,9 +372,6 @@
                 <h2>Força Verde que Alimenta</h2>
                 <p>O Agro Forte representa a evolução da produção no campo. Acreditamos que a alta produtividade pode caminhar lado a lado com a preservação dos recursos naturais, garantindo solo fértil e água limpa para as próximas gerações.</p>
             </div>
-            <div class="about-image">
-                <img src="https://unsplash.com" alt="Plantação jovem crescendo com tecnologia de irrigação">
-            </div>
         </div>
     </section>
 
@@ -372,3 +379,5 @@
         <h2>Nossos Pilares Sustentáveis</h2>
         <div class="card-container">
             <div class="card">
+                <i class="fa-solid fa-droplet card-icon"></i>
+                <h3>Uso da Água</h3>
