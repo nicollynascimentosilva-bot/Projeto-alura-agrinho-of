@@ -1,55 +1,37 @@
-/* Definição de Variáveis de Cores de Alta Linha */
-:root {
-    --primary-color: #1b4332;
-    --secondary-color: #2d6a4f;
-    --accent-color: #52b788;
-    --light-accent: #d8f3dc;
-    --background-gray: #f4f7f5;
-    --text-dark: #212529;
-    --text-muted: #6c757d;
-    --white: #ffffff;
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-/* Reset Geral Avançado */
+/* Configurações Gerais */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: var(--background-gray);
-    color: var(--text-dark);
-    line-height: 1.6;
-    overflow-x: hidden;
+    background-color: #f4f7f5;
+    color: #333;
     scroll-behavior: smooth;
 }
 
-/* Menu Navbar Fixo Autoadaptável */
+/* Menu de Navegação */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 10%;
-    background-color: var(--primary-color);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    background-color: #1b4332;
+    color: white;
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
 .logo {
-    font-size: 26px;
-    font-weight: 800;
-    color: var(--white);
-    letter-spacing: -0.5px;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .logo span {
-    color: var(--accent-color);
+    color: #52b788;
 }
 
 .nav-links {
@@ -58,479 +40,305 @@ body {
 }
 
 .nav-links li {
-    margin-left: 30px;
+    margin-left: 20px;
 }
 
 .nav-links a {
-    color: var(--white);
+    color: white;
     text-decoration: none;
-    font-weight: 600;
-    font-size: 15px;
-    transition: var(--transition);
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: var(--accent-color);
+    color: #52b788;
 }
 
-/* Design de Capa (Hero Segment) */
+/* Banner de Destaque (Hero) */
 .hero {
-    min-height: 65vh;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    height: 50vh;
+    background-color: #2d6a4f;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 60px 20px;
-    color: var(--white);
-    position: relative;
-}
-
-.hero::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 40px;
-    background: var(--background-gray);
-    clip-path: polygon(0 100%, 100% 100%, 100% 0);
-}
-
-.hero-content {
-    max-width: 800px;
-}
-
-.badge {
-    background-color: rgba(82, 183, 136, 0.2);
-    color: var(--accent-color);
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    display: inline-block;
-    margin-bottom: 20px;
+    color: white;
+    padding: 0 20px;
+    border-bottom: 5px solid #52b788;
 }
 
 .hero h1 {
-    font-size: 48px;
-    font-weight: 800;
-    line-height: 1.2;
+    font-size: 44px;
     margin-bottom: 20px;
 }
 
 .hero p {
     font-size: 18px;
-    color: var(--light-accent);
-    margin-bottom: 35px;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+    color: #d8f3dc;
 }
 
-.hero-buttons {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-}
-
-.btn-primary, .btn-secondary {
-    padding: 14px 32px;
-    font-size: 15px;
-    font-weight: 700;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: var(--transition);
-    border: none;
-}
-
-.btn-primary {
-    background-color: var(--accent-color);
-    color: var(--primary-color);
-}
-
-.btn-primary:hover {
-    background-color: #40916c;
-    color: var(--white);
-    transform: translateY(-2px);
-}
-
-.btn-secondary {
-    background-color: transparent;
-    color: var(--white);
-    border: 2px solid var(--white);
-}
-
-.btn-secondary:hover {
-    background-color: var(--white);
-    color: var(--primary-color);
-}
-
-/* Estruturação de Títulos de Seção */
-.section-title {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.section-title h2 {
-    font-size: 32px;
-    color: var(--primary-color);
-    font-weight: 800;
-    margin-bottom: 10px;
-}
-
-.section-title p {
-    color: var(--text-muted);
+.hero button {
+    padding: 12px 30px;
     font-size: 16px;
+    background-color: #52b788;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
-/* Container de Recursos (Grid Flex) */
+.hero button:hover {
+    background-color: #40916c;
+}
+
+/* Seção de Pilares (Cards) */
 .features {
-    padding: 80px 10%;
+    padding: 60px 10%;
+    text-align: center;
+}
+
+.features h2 {
+    margin-bottom: 40px;
+    color: #1b4332;
 }
 
 .card-container {
     display: flex;
     justify-content: space-between;
-    gap: 25px;
+    gap: 20px;
     flex-wrap: wrap;
 }
 
 .card {
-    background-color: var(--white);
+    background: white;
     flex: 1;
-    min-width: 280px;
-    padding: 40px 30px;
-    border-radius: 12px;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    border-top: 4px solid transparent;
+    min-width: 250px;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-top: 5px solid #52b788;
 }
 
-.card:hover {
-    transform: translateY(-8px);
-    border-top-color: var(--accent-color);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-}
-
-.card-icon-box {
-    width: 60px;
-    height: 60px;
-    background-color: var(--light-accent);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    color: var(--secondary-color);
-    margin-bottom: 25px;
+.card-icon {
+    font-size: 40px;
+    color: #52b788;
+    margin-bottom: 15px;
 }
 
 .card h3 {
-    font-size: 20px;
-    color: var(--primary-color);
     margin-bottom: 15px;
+    color: #1b4332;
 }
 
-.card p {
-    color: var(--text-muted);
-    font-size: 14px;
+/* Container do Quiz */
+.quiz-section {
+    padding: 60px 10%;
+    background-color: white;
+    text-align: center;
 }
 
-/* Seção de Tecnologia Gráfica (Ilustrações CSS) */
-.tech-section {
-    background-color: var(--white);
-    padding: 80px 10%;
+.quiz-section h2 {
+    color: #1b4332;
+    margin-bottom: 10px;
 }
 
-.tech-container {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    flex-wrap: wrap;
+.quiz-subtitle {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 15px;
 }
 
-.tech-text {
-    flex: 1;
-    min-width: 320px;
-}
-
-.tech-text h2 {
-    font-size: 32px;
-    color: var(--primary-color);
-    font-weight: 800;
-    margin-bottom: 20px;
-}
-
-.tech-list {
-    list-style: none;
-    margin-top: 25px;
-}
-
-.tech-list li {
-    margin-bottom: 15px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.tech-list i {
-    color: var(--accent-color);
-    font-size: 18px;
-}
-
-/* Ilustração Arquitetada via CSS (Horta Hidropônica) */
-.tech-visual {
-    flex: 1;
-    min-width: 320px;
-    display: flex;
-    justify-content: center;
-}
-
-.hydro-box {
-    width: 100%;
-    max-width: 380px;
-    height: 260px;
-    background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
-    border-radius: 16px;
-    position: relative;
-    box-shadow: var(--shadow);
+.quiz-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f4f7f5;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: left;
+    min-height: 320px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.plant-row {
-    display: flex;
-    gap: 40px;
-    margin-bottom: 10px;
-    z-index: 2;
-}
-
-.css-leaf {
-    width: 35px;
-    height: 35px;
-    background-color: var(--accent-color);
-    border-radius: 0 70% 0 70%;
-    transform: rotate(-15deg);
-    box-shadow: 0 4px 10px rgba(82, 183, 136, 0.4);
-    position: relative;
-}
-
-.css-leaf::after {
-    content: '';
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    background-color: var(--secondary-color);
-    border-radius: 70% 0 70% 0;
-    left: -5px;
-    top: 5px;
-}
-
-.water-pipe {
-    width: 80%;
-    height: 20px;
-    background-color: #adb5bd;
-    border-radius: 10px;
-    position: relative;
-    overflow: hidden;
-}
-
-.water-flow {
-    position: absolute;
-    width: 40%;
-    height: 100%;
-    background-color: #4cc9f0;
-    border-radius: 10px;
-    animation: flowMove 2s infinite linear;
-}
-
-@keyframes flowMove {
-    0% { left: -40%; }
-    100% { left: 100%; }
-}
-
-/* Modulo Visual do Quiz Dinâmico */
-.quiz-section {
-    padding: 80px 10%;
-}
-
-.quiz-box {
-    max-width: 650px;
-    margin: 0 auto;
-    background-color: var(--white);
-    border-radius: 16px;
-    box-shadow: var(--shadow);
-    padding: 40px;
-}
-
-.progress-bar-container {
-    width: 100%;
-    height: 6px;
-    background-color: var(--background-gray);
-    border-radius: 3px;
-    margin-bottom: 30px;
-    overflow: hidden;
-}
-
-.progress-bar {
-    width: 0%;
-    height: 100%;
-    background-color: var(--accent-color);
-    transition: width 0.4s ease;
+    justify-content: space-between;
 }
 
 .quiz-header {
     display: flex;
     justify-content: space-between;
-    color: var(--text-muted);
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 20px;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 5px;
 }
 
 .quiz-question {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 25px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #1b4332;
 }
 
+/* Alternativas de Resposta */
 .quiz-options {
     list-style: none;
+    margin-bottom: 20px;
 }
 
 .quiz-options li {
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .quiz-options label {
     display: flex;
     align-items: center;
-    padding: 16px;
-    background-color: var(--background-gray);
-    border: 2px solid #e9ecef;
-    border-radius: 8px;
+    padding: 14px;
+    background-color: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
     cursor: pointer;
-    font-weight: 600;
-    transition: var(--transition);
+    transition: all 0.2s ease;
 }
 
 .quiz-options label:hover {
-    border-color: var(--accent-color);
+    border-color: #52b788;
     background-color: #f1f9f5;
 }
 
 .quiz-options input {
     margin-right: 15px;
-    accent-color: var(--secondary-color);
-    transform: scale(1.3);
+    accent-color: #52b788;
+    transform: scale(1.2);
 }
 
 .quiz-btn {
     width: 100%;
-    padding: 16px;
-    background-color: var(--primary-color);
-    color: var(--white);
+    padding: 15px;
+    background-color: #52b788;
+    color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     font-size: 16px;
-    font-weight: 700;
+    font-weight: bold;
     cursor: pointer;
-    margin-top: 15px;
-    transition: var(--transition);
+    transition: background-color 0.3s ease;
 }
 
 .quiz-btn:hover {
-    background-color: var(--secondary-color);
+    background-color: #40916c;
 }
 
-/* Janela Modular de Resultados Finais */
+/* Janela de Resultados */
 .result-screen {
     text-align: center;
-    padding: 30px 10px;
+    padding: 20px 0;
 }
 
 .result-screen i {
-    font-size: 64px;
-    color: var(--accent-color);
-    margin-bottom: 20px;
+    font-size: 50px;
+    color: #52b788;
+    margin-bottom: 15px;
 }
 
 .score-text {
-    font-size: 24px;
-    font-weight: 800;
-    color: var(--primary-color);
-    margin-bottom: 12px;
-}
-
-.feedback-text {
-    color: var(--text-muted);
-    font-size: 15px;
-    margin-bottom: 30px;
-}
-
-/* Modulo de Contato/Inscrições */
-.contact-section {
-    background-color: var(--light-accent);
-    padding: 80px 10%;
-    text-align: center;
-}
-
-.contact-container {
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.contact-container h2 {
-    font-size: 32px;
-    color: var(--primary-color);
-    font-weight: 800;
+    font-size: 22px;
+    font-weight: bold;
+    color: #1b4332;
     margin-bottom: 10px;
 }
 
-.contact-container p {
-    color: var(--secondary-color);
-    font-weight: 500;
-    margin-bottom: 35px;
+.feedback-text {
+    color: #555;
+    margin-bottom: 25px;
+    line-height: 1.5;
 }
 
-.input-group {
-    position: relative;
-    margin-bottom: 20px;
+/* Seção de Contato */
+.contact {
+    background-color: #d8f3dc;
+    padding: 60px 10%;
+    text-align: center;
 }
 
-.input-group i {
-    position: absolute;
-    left: 18px;
-    top: 18px;
-    color: var(--secondary-color);
+#agroForm {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 15px;
 }
 
-.input-group input {
-    width: 100%;
-    padding: 16px 16px 16px 50px;
-    border: 2px solid #b7e4c7;
-    border-radius: 8px;
-    outline: none;
-    font-size: 15px;
-    transition: var(--transition);
-}
-
-.input-group input:focus {
-    border-color: var(--secondary-color);
-}
-
-.btn-submit {
-    width: 100%;
-    padding: 16px;
-    background-color: var(--primary-color);
-    color: var(--white);
-    border: none;
-    border-radius: 8px;
+#agroForm input {
+    padding: 15px;
+    border: 1px solid #b7e4c7;
+    border-radius: 5px;
     font-size: 16px;
-    font-weight: 700;
+    outline: none;
+}
+
+#agroForm input:focus {
+    border-color: #52b788;
+}
+
+#agroForm button {
+    padding: 15px;
+    background-color: #1b4332;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#agroForm button:hover {
+    background-color: #2d6a4f;
+}
+
+/* Rodapé e Redes Sociais */
+footer {
+    background-color: #1b4332;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 14px;
+}
+
+/* Botão Flutuante do WhatsApp */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 9999;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Responsividade Básica */
+@media (max-width: 768px) {
+    .navbar { flex-direction: column; gap: 15px; }
+    .hero h1 { font-size: 32px; }
+    .nav-links li { margin: 0 10px; }
+    .quiz-section { padding: 40px 5%; }
+}
