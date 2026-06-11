@@ -18,6 +18,7 @@
                 <li><a href="#inicio" onclick="scrollToSection('inicio'); return false;">Início</a></li>
                 <li><a href="#beneficios" onclick="scrollToSection('beneficios'); return false;">Benefícios</a></li>
                 <li><a href="#galeria" onclick="scrollToSection('galeria'); return false;">Galeria</a></li>
+                <li><a href="#quiz" onclick="scrollToSection('quiz'); return false;">Quiz</a></li>
                 <li><a href="#contato" onclick="scrollToSection('contato'); return false;">Contato</a></li>
             </ul>
         </nav>
@@ -27,7 +28,7 @@
         <div class="hero-content">
             <h1>O Futuro da Agricultura é Sustentável</h1>
             <p>Unindo a força do campo com a preservação do meio ambiente para alimentar o mundo de forma consciente.</p>
-            <button onclick="scrollToSection('beneficios')">Saiba Mais</button>
+            <button onclick="scrollToSection('quiz')">Responder o Quiz</button>
         </div>
     </section>
 
@@ -52,7 +53,7 @@
         </div>
     </section>
 
-    <!-- SEÇÃO DA GALERIA (A SUA FOTO ESTÁ EMUTIDA AQUI) -->
+    <!-- SEÇÃO DA GALERIA (A SUA FOTO ESTÁ EMBUTIDA AQUI) -->
     <section id="galeria" class="gallery-section">
         <h2>O Campo em Foco</h2>
         <p class="gallery-subtitle">Produção moderna de hortaliças hidropônicas</p>
@@ -61,6 +62,15 @@
             <img class="gallery-img active-img" src="data:image/jpeg;base64,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" alt="Horta hidropônica de alface crespa">
             <img class="gallery-img" src="https://unsplash.com" alt="Colheita automatizada sustentável">
             <img class="gallery-img" src="https://unsplash.com" alt="Mãos trabalhando com solo fértil">
+        </div>
+    </section>
+
+    <!-- SEÇÃO DO QUIZ INTERATIVO -->
+    <section id="quiz" class="quiz-section">
+        <h2>Desafio Sustentável</h2>
+        <p class="quiz-subtitle">Responda às questões e teste seus conhecimentos sobre o agro!</p>
+        <div class="quiz-container" id="quizBox">
+            <!-- O conteúdo do quiz será gerado dinamicamente via JS -->
         </div>
     </section>
 
