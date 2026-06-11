@@ -65,7 +65,7 @@
         }
 
         .hero {
-            height: 60vh;
+            height: 50vh;
             background-color: #2d6a4f;
             display: flex;
             justify-content: center;
@@ -104,26 +104,6 @@
             background-color: #40916c;
         }
 
-        .about-section {
-            padding: 60px 10%;
-            background-color: white;
-            text-align: center;
-        }
-
-        .about-text h2 {
-            color: #1b4332;
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-
-        .about-text p {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #555;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
         .features {
             padding: 60px 10%;
             text-align: center;
@@ -149,11 +129,6 @@
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             border-top: 5px solid #52b788;
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
         }
 
         .card-icon {
@@ -167,7 +142,7 @@
             color: #1b4332;
         }
 
-        /* SEÇÃO DO QUIZ INTERATIVO */
+        /* ESTRUTURA DO QUIZ DINÂMICO */
         .quiz-section {
             padding: 60px 10%;
             background-color: white;
@@ -192,6 +167,20 @@
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             text-align: left;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 5px;
         }
 
         .quiz-question {
@@ -203,6 +192,7 @@
 
         .quiz-options {
             list-style: none;
+            margin-bottom: 20px;
         }
 
         .quiz-options li {
@@ -212,7 +202,7 @@
         .quiz-options label {
             display: flex;
             align-items: center;
-            padding: 12px;
+            padding: 14px;
             background-color: white;
             border: 2px solid #e0e0e0;
             border-radius: 6px;
@@ -228,10 +218,10 @@
         .quiz-options input {
             margin-right: 15px;
             accent-color: #52b788;
+            transform: scale(1.2);
         }
 
         .quiz-btn {
-            margin-top: 20px;
             width: 100%;
             padding: 15px;
             background-color: #52b788;
@@ -248,17 +238,29 @@
             background-color: #40916c;
         }
 
-        .quiz-result {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 6px;
-            font-weight: bold;
+        .result-screen {
             text-align: center;
-            display: none;
+            padding: 20px 0;
         }
 
-        .success { background-color: #d8f3dc; color: #1b4332; }
-        .error { background-color: #f8d7da; color: #721c24; }
+        .result-screen i {
+            font-size: 50px;
+            color: #52b788;
+            margin-bottom: 15px;
+        }
+
+        .score-text {
+            font-size: 22px;
+            font-weight: bold;
+            color: #1b4332;
+            margin-bottom: 10px;
+        }
+
+        .feedback-text {
+            color: #555;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
 
         .contact {
             background-color: #d8f3dc;
@@ -303,19 +305,6 @@
             font-size: 14px;
         }
 
-        .footer-socials {
-            margin-bottom: 15px;
-        }
-
-        .footer-socials a {
-            color: white;
-            font-size: 20px;
-            margin: 0 10px;
-            transition: color 0.3s;
-        }
-
-        .footer-socials a:hover { color: #52b788; }
-
         .whatsapp-btn {
             position: fixed;
             bottom: 20px;
@@ -331,10 +320,7 @@
             font-size: 30px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             z-index: 9999;
-            transition: transform 0.3s;
         }
-
-        .whatsapp-btn:hover { transform: scale(1.1); }
 
         @media (max-width: 768px) {
             .navbar { flex-direction: column; gap: 15px; }
@@ -350,9 +336,8 @@
         <nav>
             <ul class="nav-links">
                 <li><a href="#inicio" onclick="scrollToSection('inicio')">Início</a></li>
-                <li><a href="#sobre" onclick="scrollToSection('sobre')">Sobre</a></li>
                 <li><a href="#beneficios" onclick="scrollToSection('beneficios')">Benefícios</a></li>
-                <li><a href="#quiz" onclick="scrollToSection('quiz')">Quiz Sustentável</a></li>
+                <li><a href="#quiz" onclick="scrollToSection('quiz')">Quiz</a></li>
                 <li><a href="#contato" onclick="scrollToSection('contato')">Contato</a></li>
             </ul>
         </nav>
@@ -361,23 +346,37 @@
     <section id="inicio" class="hero">
         <div class="hero-content">
             <h1>O Futuro da Agricultura é Sustentável</h1>
-            <p>Unindo a força do campo com a preservação do meio ambiente para alimentar o mundo de forma consciente.</p>
-            <button onclick="scrollToSection('beneficios')">Saiba Mais</button>
-        </div>
-    </section>
-
-    <section id="sobre" class="about-section">
-        <div class="about-container">
-            <div class="about-text">
-                <h2>Força Verde que Alimenta</h2>
-                <p>O Agro Forte representa a evolução da produção no campo. Acreditamos que a alta produtividade pode caminhar lado a lado com a preservação dos recursos naturais, garantindo solo fértil e água limpa para as próximas gerações.</p>
-            </div>
+            <p>Unindo a força do campo com a preservação do meio ambiente de forma consciente.</p>
+            <button onclick="scrollToSection('quiz')">Jogar o Quiz</button>
         </div>
     </section>
 
     <section id="beneficios" class="features">
-        <h2>Nossos Pilares Sustentáveis</h2>
+        <h2>Nossos Pilares</h2>
         <div class="card-container">
             <div class="card">
                 <i class="fa-solid fa-droplet card-icon"></i>
-                <h3>Uso da Água</h3>
+                <h3>Água Protegida</h3>
+                <p>Tecnologias de irrigação inteligente que combatem o desperdício.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-seedling card-icon"></i>
+                <h3>Solo Nutrito</h3>
+                <p>Uso de adubação verde e processos orgânicos naturais.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DO QUIZ REFEITA COM VÁRIAS PERGUNTAS -->
+    <section id="quiz" class="quiz-section">
+        <h2>Desafio Sustentável</h2>
+        <p class="quiz-subtitle">Responda às questões e descubra o seu nível de conhecimento!</p>
+        
+        <div class="quiz-container" id="quizBox">
+            <!-- O conteúdo aqui será gerado dinamicamente pelo JavaScript -->
+        </div>
+    </section>
+
+    <section id="contato" class="contact">
+        <h2>Fale Conosco</h2>
+        <form id="agroForm">
