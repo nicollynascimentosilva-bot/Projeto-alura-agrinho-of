@@ -54,20 +54,21 @@ body {
     color: #52b788;
 }
 
-/* Seção Principal (Hero) */
+/* Banner de Destaque (Hero) */
 .hero {
-    height: 70vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://unsplash.com') no-repeat center center/cover;
+    height: 50vh;
+    background-color: #2d6a4f;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: white;
     padding: 0 20px;
+    border-bottom: 5px solid #52b788;
 }
 
 .hero h1 {
-    font-size: 48px;
+    font-size: 44px;
     margin-bottom: 20px;
 }
 
@@ -75,6 +76,7 @@ body {
     font-size: 18px;
     max-width: 600px;
     margin: 0 auto 30px auto;
+    color: #d8f3dc;
 }
 
 .hero button {
@@ -93,49 +95,7 @@ body {
     background-color: #40916c;
 }
 
-/* Seção Sobre */
-.about-section {
-    padding: 60px 10%;
-    background-color: white;
-}
-
-.about-container {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-
-.about-text {
-    flex: 1;
-    min-width: 300px;
-}
-
-.about-text h2 {
-    color: #1b4332;
-    font-size: 32px;
-    margin-bottom: 20px;
-}
-
-.about-text p {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #555;
-}
-
-.about-image {
-    flex: 1;
-    min-width: 300px;
-}
-
-.about-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-/* Seção Recursos (Cards) */
+/* Seção de Pilares (Cards) */
 .features {
     padding: 60px 10%;
     text-align: center;
@@ -161,11 +121,6 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     border-top: 5px solid #52b788;
-    transition: transform 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
 }
 
 .card-icon {
@@ -179,53 +134,127 @@ body {
     color: #1b4332;
 }
 
-/* Galeria de Fotos */
-.gallery-section {
+/* Container do Quiz */
+.quiz-section {
     padding: 60px 10%;
-    text-align: center;
     background-color: white;
+    text-align: center;
 }
 
-.gallery-section h2 {
+.quiz-section h2 {
     color: #1b4332;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
-.gallery-subtitle {
+.quiz-subtitle {
     color: #666;
     margin-bottom: 30px;
-    font-size: 14px;
+    font-size: 15px;
 }
 
-.gallery-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.gallery-img {
-    width: 100%;
-    max-width: 320px;
-    height: 240px;
-    object-fit: cover;
+.quiz-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f4f7f5;
+    padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: left;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 5px;
+}
+
+.quiz-question {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #1b4332;
+}
+
+/* Alternativas de Resposta */
+.quiz-options {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.quiz-options li {
+    margin-bottom: 12px;
+}
+
+.quiz-options label {
+    display: flex;
+    align-items: center;
+    padding: 14px;
+    background-color: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
     cursor: pointer;
-    transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
+    transition: all 0.2s ease;
 }
 
-.gallery-img:hover {
-    transform: scale(1.05) translateY(-5px);
-    filter: brightness(1.05);
-    box-shadow: 0 12px 20px rgba(27, 67, 50, 0.2);
+.quiz-options label:hover {
+    border-color: #52b788;
+    background-color: #f1f9f5;
 }
 
-/* Classe de Destaque da Imagem (Ativada via JS) */
-.img-active {
-    outline: 4px solid #52b788;
-    outline-offset: 6px;
-    transform: scale(1.02);
+.quiz-options input {
+    margin-right: 15px;
+    accent-color: #52b788;
+    transform: scale(1.2);
+}
+
+.quiz-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #52b788;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.quiz-btn:hover {
+    background-color: #40916c;
+}
+
+/* Janela de Resultados */
+.result-screen {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.result-screen i {
+    font-size: 50px;
+    color: #52b788;
+    margin-bottom: 15px;
+}
+
+.score-text {
+    font-size: 22px;
+    font-weight: bold;
+    color: #1b4332;
+    margin-bottom: 10px;
+}
+
+.feedback-text {
+    color: #555;
+    margin-bottom: 25px;
+    line-height: 1.5;
 }
 
 /* Seção de Contato */
@@ -233,11 +262,6 @@ body {
     background-color: #d8f3dc;
     padding: 60px 10%;
     text-align: center;
-}
-
-.contact h2 {
-    color: #1b4332;
-    margin-bottom: 10px;
 }
 
 #agroForm {
@@ -287,22 +311,6 @@ footer {
     font-size: 14px;
 }
 
-.footer-socials {
-    margin-bottom: 15px;
-}
-
-.footer-socials a {
-    color: white;
-    font-size: 20px;
-    margin: 0 10px;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-socials a:hover {
-    color: #52b788;
-}
-
 /* Botão Flutuante do WhatsApp */
 .whatsapp-btn {
     position: fixed;
@@ -317,22 +325,20 @@ footer {
     justify-content: center;
     align-items: center;
     font-size: 30px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     z-index: 9999;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    text-decoration: none;
+    transition: transform 0.3s ease;
 }
 
 .whatsapp-btn:hover {
     transform: scale(1.1);
-    background-color: #1ebd58;
 }
 
-/* Telas de Celular (Responsividade) */
+/* Responsividade Básica */
 @media (max-width: 768px) {
     .navbar { flex-direction: column; gap: 15px; }
     .hero h1 { font-size: 32px; }
-    .nav-links { width: 100%; justify-content: center; }
     .nav-links li { margin: 0 10px; }
-    .about-section, .features, .gallery-section, .contact { padding: 40px 5%; }
+    .quiz-section { padding: 40px 5%; }
 }
