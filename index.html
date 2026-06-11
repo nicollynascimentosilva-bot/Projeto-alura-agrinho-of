@@ -4,100 +4,149 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agro Forte - Agricultura Sustentável</title>
-    <!-- Conexão com o CSS externo usando letras minúsculas -->
+    <!-- Conexão estrita com o arquivo CSS externo -->
     <link rel="stylesheet" href="./style.css">
-    <!-- Biblioteca de Ícones -->
+    <!-- Biblioteca de Ícones Premium (Font Awesome) -->
     <link rel="stylesheet" href="https://cloudflare.com">
 </head>
 <body>
 
+    <!-- Menu de Navegação Superior -->
     <header class="navbar">
         <div class="logo">Agro<span>Forte</span></div>
         <nav>
             <ul class="nav-links">
                 <li><a href="#inicio" onclick="scrollToSection('inicio'); return false;">Início</a></li>
-                <li><a href="#beneficios" onclick="scrollToSection('beneficios'); return false;">Benefícios</a></li>
-                <li><a href="#galeria" onclick="scrollToSection('galeria'); return false;">Galeria</a></li>
+                <li><a href="#pilares" onclick="scrollToSection('pilares'); return false;">Pilares</a></li>
+                <li><a href="#tecnologia" onclick="scrollToSection('tecnologia'); return false;">Tecnologia</a></li>
                 <li><a href="#quiz" onclick="scrollToSection('quiz'); return false;">Quiz</a></li>
                 <li><a href="#contato" onclick="scrollToSection('contato'); return false;">Contato</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- Seção de Destaque (Hero Banner) -->
     <section id="inicio" class="hero">
         <div class="hero-content">
+            <span class="badge">Inovação e Consciência</span>
             <h1>O Futuro da Agricultura é Sustentável</h1>
-            <p>Unindo a força do campo com a preservação do meio ambiente para alimentar o mundo de forma consciente.</p>
-            <button onclick="scrollToSection('quiz')">Responder o Quiz</button>
+            <p>Unindo a força do produtor rural com a preservação do meio ambiente para alimentar o mundo através da tecnologia verde.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="scrollToSection('quiz')">Desafio Quiz</button>
+                <button class="btn-secondary" onclick="scrollToSection('pilares')">Conhecer Pilares</button>
+            </div>
         </div>
     </section>
 
-    <section id="beneficios" class="features">
-        <h2>Nossos Pilares Sustentáveis</h2>
+    <!-- Seção de Pilares (Cards Informativos) -->
+    <section id="pilares" class="features">
+        <div class="section-title">
+            <h2>Nossos Pilares Sustentáveis</h2>
+            <p>Práticas conscientes que aumentam a produtividade protegendo os recursos naturais</p>
+        </div>
         <div class="card-container">
             <div class="card">
-                <i class="fa-solid fa-droplet card-icon"></i>
-                <h3>Uso da Água</h3>
-                <p>Sistemas de irrigação gota a gota que reduzem o desperdício em até 60%.</p>
+                <div class="card-icon-box"><i class="fa-solid fa-droplet"></i></div>
+                <h3>Gestão Hídrica</h3>
+                <p>Sistemas automatizados de irrigação gota a gota que direcionam a água diretamente à raiz, eliminando até 60% do desperdício.</p>
             </div>
             <div class="card">
-                <i class="fa-solid fa-seedling card-icon"></i>
+                <div class="card-icon-box"><i class="fa-solid fa-seedling"></i></div>
                 <h3>Solo Vivo</h3>
-                <p>Rotação de culturas e adubação orgânica para manter a terra fértil.</p>
+                <p>Adoção da rotação de culturas e adubação verde com plantas leguminosas, restaurando os nutrientes da terra naturalmente.</p>
             </div>
             <div class="card">
-                <i class="fa-solid fa-cloud-sun-rain card-icon"></i>
-                <h3>Tecnologia Verde</h3>
-                <p>Drones e sensores que otimizam o plantio e evitam desperdícios.</p>
+                <div class="card-icon-box"><i class="fa-solid fa-cloud-sun-rain"></i></div>
+                <h3>Monitoramento Ativo</h3>
+                <p>Sensores inteligentes integrados que avaliam a umidade e a saúde foliar, reduzindo a necessidade de intervenções químicas.</p>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO DA GALERIA (A SUA FOTO ESTÁ EMBUTIDA AQUI) -->
-    <section id="galeria" class="gallery-section">
-        <h2>O Campo em Foco</h2>
-        <p class="gallery-subtitle">Produção moderna de hortaliças hidropônicas</p>
-        <div class="gallery-container">
-            <!-- SUA IMAGEM DO CHAT CONVERTIDA EM TEXTO SEGURO PARA O GITHUB -->
-            <img class="gallery-img active-img" src="data:image/jpeg;base64,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" alt="Horta hidropônica de alface crespa">
-            <img class="gallery-img" src="https://unsplash.com" alt="Colheita automatizada sustentável">
-            <img class="gallery-img" src="https://unsplash.com" alt="Mãos trabalhando com solo fértil">
+    <!-- Seção de Tecnologia Ilustrada (Substituta de imagens com CSS Puro) -->
+    <section id="tecnologia" class="tech-section">
+        <div class="tech-container">
+            <div class="tech-text">
+                <h2>Tecnologia Aplicada à Horta Hidropônica</h2>
+                <p>A hidroponia é o reflexo perfeito do Agro Forte: plantas cultivadas sem terra, alimentadas por uma solução aquosa rica em nutrientes minerais essenciais.</p>
+                <ul class="tech-list">
+                    <li><i class="fa-solid fa-circle-check"></i> Controle absoluto de pragas de forma biológica.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Economia severa de recursos e espaço físico.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Alimentos mais puros, limpos e nutritivos para a mesa.</li>
+                </ul>
+            </div>
+            <div class="tech-visual">
+                <!-- Ilustração Profissional construída 100% via CSS -->
+                <div class="hydro-box">
+                    <div class="plant-row">
+                        <div class="css-leaf"></div>
+                        <div class="css-leaf"></div>
+                        <div class="css-leaf"></div>
+                    </div>
+                    <div class="water-pipe">
+                        <div class="water-flow"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- SEÇÃO DO QUIZ INTERATIVO -->
+    <!-- Seção do Quiz Avançado -->
     <section id="quiz" class="quiz-section">
-        <h2>Desafio Sustentável</h2>
-        <p class="quiz-subtitle">Responda às questões e teste seus conhecimentos sobre o agro!</p>
-        <div class="quiz-container" id="quizBox">
-            <!-- O conteúdo do quiz será gerado dinamicamente via JS -->
+        <div class="section-title">
+            <h2>Desafio Agro Sustentável</h2>
+            <p>Descubra em qual nível está o seu conhecimento sobre a tecnologia e preservação no campo</p>
+        </div>
+        
+        <div class="quiz-box">
+            <!-- Barra de progresso visual do progresso do jogador -->
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div id="quizContent">
+                <!-- Conteúdo injetado dinamicamente via script.js -->
+            </div>
         </div>
     </section>
 
-    <section id="contato" class="contact">
-        <h2>Fale Conosco</h2>
-        <form id="agroForm">
-            <input type="text" id="nome" placeholder="Seu Nome" required>
-            <input type="email" id="email" placeholder="Seu E-mail" required>
-            <button type="submit">Enviar Mensagem</button>
-        </form>
+    <!-- Seção de Contato -->
+    <section id="contato" class="contact-section">
+        <div class="contact-container">
+            <h2>Fale com Especialistas</h2>
+            <p>Inscreva-se para receber novidades técnicas e boletins sobre a evolução do agro consciente.</p>
+            <form id="agroForm">
+                <div class="input-group">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="nome" placeholder="Digite seu nome completo" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" id="email" placeholder="Seu melhor e-mail corporativo" required>
+                </div>
+                <button type="submit" class="btn-submit">Enviar Cadastro</button>
+            </form>
+        </div>
     </section>
 
-    <!-- Botão do WhatsApp -->
-    <a href="https://wa.me" class="whatsapp-btn" target="_blank" aria-label="WhatsApp">
+    <!-- Botão Flutuante de Contato do WhatsApp -->
+    <a href="https://wa.me" class="whatsapp-float" target="_blank" aria-label="Contato direto no WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    <!-- Rodapé Institucional -->
     <footer>
-        <div class="footer-socials">
-            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <div class="footer-container">
+            <div class="footer-brand">Agro<span>Forte</span></div>
+            <div class="footer-socials">
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
         </div>
-        <p>&copy; 2026 Agro Forte. Todos os direitos reservados.</p>
+        <p class="copyright">&copy; 2026 Agro Forte. Projeto Educacional Alura Agrinho. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- Link para o script externo -->
+    <!-- Vínculo estrito com o arquivo JavaScript externo -->
     <script src="./script.js"></script>
 </body>
 </html>
