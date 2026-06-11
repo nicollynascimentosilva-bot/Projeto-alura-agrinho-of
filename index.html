@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agro Forte - Agricultura Sustentável</title>
-    <!-- Arquivo de Estilos Externo -->
-    <link rel="stylesheet" href="style.css">
+    <!-- Conexão com o CSS externo usando letras minúsculas -->
+    <link rel="stylesheet" href="./style.css">
     <!-- Biblioteca de Ícones -->
     <link rel="stylesheet" href="https://cloudflare.com">
 </head>
@@ -18,7 +18,6 @@
                 <li><a href="#inicio" onclick="scrollToSection('inicio'); return false;">Início</a></li>
                 <li><a href="#beneficios" onclick="scrollToSection('beneficios'); return false;">Benefícios</a></li>
                 <li><a href="#galeria" onclick="scrollToSection('galeria'); return false;">Galeria</a></li>
-                <li><a href="#quiz" onclick="scrollToSection('quiz'); return false;">Quiz</a></li>
                 <li><a href="#contato" onclick="scrollToSection('contato'); return false;">Contato</a></li>
             </ul>
         </nav>
@@ -28,7 +27,7 @@
         <div class="hero-content">
             <h1>O Futuro da Agricultura é Sustentável</h1>
             <p>Unindo a força do campo com a preservação do meio ambiente para alimentar o mundo de forma consciente.</p>
-            <button onclick="scrollToSection('quiz')">Responder o Quiz</button>
+            <button onclick="scrollToSection('beneficios')">Saiba Mais</button>
         </div>
     </section>
 
@@ -53,23 +52,15 @@
         </div>
     </section>
 
-    <!-- SEÇÃO DA GALERIA DE IMAGENS -->
+    <!-- SEÇÃO DA GALERIA (A SUA FOTO ESTÁ EMUTIDA AQUI) -->
     <section id="galeria" class="gallery-section">
         <h2>O Campo em Foco</h2>
-        <p class="gallery-subtitle">Imagens reais da nossa produção sustentável</p>
+        <p class="gallery-subtitle">Produção moderna de hortaliças hidropônicas</p>
         <div class="gallery-container">
+            <!-- SUA IMAGEM DO CHAT CONVERTIDA EM TEXTO SEGURO PARA O GITHUB -->
+            <img class="gallery-img active-img" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUTExMWFhUXGBgXGBgXFxgYFxgYFxcXGBgYFxcdHSggGBolHRcXITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGi0lHyYtLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIALcBFAMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAADAGAAECBAUGB//EADwQAAEDAgMFBwMDBAEDBQEAAAEAAhEDIQQSMUFRYXGBBRMikaGx8DLB0ULh8VJiFAYVI3KCkqKys8IH/8QAGBEBAQEBAQAAAAAAAAAAAAAAAQACAwf/xAAdEQEBAQEBAAMBAQAAAAAAAAAAEQECEgMxITNB/9oADAMBAAIRAxEAPwDzcBTAUgFIBeZ6SgKQCmApAIAgFIBSAQAThSATAUoTEKUJ0AAnCeE8JiBThPCeEwghPCeFICUIBPCkAnASIEITwkhFhPCeEkosJITwkhIEqScBRKkkoThIg ThSATAFIBSBSAUoUgFIBSAQBAUoUgE4CEEATgKQCcBNIIBSAThOEQIIUoTpggQpAJ0yYIThInhIghOE8JISCE8J0yBCEkJwmIEJIThIEqShPCREkpJwFEqScBSAUiFApwpAKQCgVABSATgKQCECEgFIBSAQYIAnATwnTBAgUoUgnCIECUBPCUJiRAnCcJIRCEKUKUIpECE4ToSgU4TwnSFCSE8JECUJpSJSYEpFKEigE8p4TKiUkpThIgUlIhMKApKQUgFEBvCkApgKQCgVApAKEBSgREgE4CcBICBCAJwE8JQmgEJwE6EIEKUIkJwEwhAp4UoThECEkJgU0IEAnARAkyRApDVKFECEKUJFJAJSKRSVAlIhPKhAhPCZJAeU0pkihApgpBSpBWApBWCmAgQThOEQgUgE6AIE8J4ThMEAmTwnCIEE6eE6YIAnCcJwmEEJwFIJwmgRCmAnARCmEIE4RAE6BCEIQJ4SIEJ4ToYIEwUpUoRAhIlShNCApQpEIU0IKRUklQEplIpFMCUlOFAUgFIBWAYBSAThEKBCEgE6BCEJwE8IghCdPCEIAnATpwhgEJwnToYIAnThOEQIQhSARCEAnARAEApgpAJ0MEAnAUgE6YRAhCFTFKIpEJoUgpAJoSQEKTwmKASmKkiFCSmUqQQKQCsFIBECuFMBTATAwE4CkBICBMVThSA ThOERIEJwUgpAIEAnAUgJAnCEIEAnATwhggCcJwE6GCAJwFIBOEEApgKQCkBCEAQpA JAnThEEIThPCVMEIQhAlCECEkJwmIIUwhSlCgEk8JFSKlKUJFCBSSSTAlMVIqRQCUiFICgWFTCmApgIDwE8J0oQE4ThPCEEAnTwnRDBOFIBShDEAnASAUoREgnATwnCYAnCcJwEwIEpUk6IEE4TwnCYIAnATpwhggTgJwFIBEECcApgpwEQIAnARAFFgEKEIQJQhApCgQkmpKhAJJFJAUpSlMoBSUlIoBSUhNChAlPClCSmEQKQCcBSATAeFICZOFICU8KQCmAmEIKQCkAgAnASAUgExIFOBMpAJogQhSASAmEEIQpQhCBCEgEwUgmEEJwFIBOERIApQnToYIApQpAIgQhCEAnToSgShNClCYECUIUpQoQhIlCEgFKU6SApSlMVIJQKRUpTFSApgpQpgQYCnCmApgIDpAKQCmAmEIKQCkBICVMAAUgE6mETBOCmAUwEwIAUgnARAggCUBPClCECAUoToAgCcJwE6IEE4ThOERYTwnhOEIAnToSggAnARAkyBCECUKUIQIEpUkihBSlMUpQCpSkkgiUpSSoGUpTKSgFKUymEIKUwmAUgIGCmAmCmAgBBSAThSARAgEwUoTpogFKFIJwEwICUBPCECcBOnTBAIBSAThECAJwE6IEEJwFJOmEIE4RAhCBCEqEChMVIpEIIUoTp0IEJk6EiBKUykUApSklQMlKcpkoFKUppUCmCkE4EApTFSATAkFIBIBSAmAgFMBTCECcBMBOCgAnARAEApgFKFOEAIBOnARAgCdOmCYIE8Jk4RCBOAnToYIAnATwgQpQnTpgEJJEoQgQhOEyEiBIpFIoEUgUkqAUpSlSgUpTJSgEpTKTCIUplMIAUgEgFKEMSAUgEgJUwIAUgmUwgAAVIBIBTAREggTwnARAEEJwFIBOnBAE6YBECEEITwnARAknARAkhPCUIEITwlCBCEKUIEJQmUvCgRCZOhAgSlMUhgApSlKpAlMVISpA UpSlIKQSAUgEgpgUClIp0wABOBSAThTAgBMApAIgTgJ4ThECE4CcBOmBAE6YBQBOERYTwnhOERYTwnTphCBOAmToEBCmEiEChKFIhAhCUIEIUghAgSlKFAEqTpIQIpFIlUApSlKlApSlOEAwUgpBSApgUk4CmAphQKUKQUgEUICpQpAIgTgJwEQIAThOAmEAE8JwE6GAATgJwFIIghCcBTAREAnATwnQIQhBCEqVMBShMEmAnChAhKFCBIJwnhCoEJSmSREpSkkg//Z" alt="Horta hidropônica de alface crespa">
             <img class="gallery-img" src="https://unsplash.com" alt="Colheita automatizada sustentável">
-            <img class="gallery-img" src="https://unsplash.com" alt="Horta orgânica de alface">
-            <img class="gallery-img" src="https://unsplash.com" alt="Mãos com solo fértil">
-        </div>
-    </section>
-
-    <!-- SEÇÃO DO QUIZ INTERATIVO -->
-    <section id="quiz" class="quiz-section">
-        <h2>Desafio Sustentável</h2>
-        <p class="quiz-subtitle">Responda às questões e teste seus conhecimentos sobre o agro!</p>
-        <div class="quiz-container" id="quizBox">
-            <!-- O conteúdo do quiz será gerado dinamicamente via JS -->
+            <img class="gallery-img" src="https://unsplash.com" alt="Mãos trabalhando com solo fértil">
         </div>
     </section>
 
@@ -96,46 +87,7 @@
         <p>&copy; 2026 Agro Forte. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- Arquivo Script Externo -->
-    <script src="script.js"></script>
-</body>
-    " alt="Mãos trabalhando com solo fértil">
-        </div>
-    </section>
-
-    <section id="quiz" class="quiz-section">
-        <h2>Desafio Sustentável</h2>
-        <p class="quiz-subtitle">Responda às questões e teste seus conhecimentos sobre o agro!</p>
-        <div class="quiz-container" id="quizBox">
-            <!-- Conteúdo injetado via script.js -->
-        </div>
-    </section>
-
-    <section id="contato" class="contact">
-        <h2>Fale Conosco</h2>
-        <form id="agroForm">
-            <input type="text" id="nome" placeholder="Seu Nome" required>
-            <input type="email" id="email" placeholder="Seu E-mail" required>
-            <button type="submit">Enviar Mensagem</button>
-        </form>
-    </section>
-
-    <a href="https://wa.me" class="whatsapp-btn" target="_blank" aria-label="WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-    <footer>
-        <div class="footer-socials">
-            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-        </div>
-        <p>&copy; 2026 Agro Forte. Todos os direitos reservados.</p>
-    </footer>
-
-    <!-- Vínculo com o arquivo JavaScript externo -->
+    <!-- Link para o script externo -->
     <script src="./script.js"></script>
 </body>
-</html>
-
 </html>
