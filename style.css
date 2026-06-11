@@ -1,4 +1,4 @@
-/* Configurações Gerais */
+/* Configurações Globais */
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +12,7 @@ body {
     scroll-behavior: smooth;
 }
 
-/* Menu de Navegação */
+/* Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -47,24 +47,23 @@ body {
     color: white;
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: color 0.3s;
 }
 
 .nav-links a:hover {
     color: #52b788;
 }
 
-/* Banner de Destaque (Hero) */
+/* Banner Hero */
 .hero {
     height: 50vh;
-    background-color: #2d6a4f;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://unsplash.com') no-repeat center center/cover;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: white;
     padding: 0 20px;
-    border-bottom: 5px solid #52b788;
 }
 
 .hero h1 {
@@ -76,7 +75,6 @@ body {
     font-size: 18px;
     max-width: 600px;
     margin: 0 auto 30px auto;
-    color: #d8f3dc;
 }
 
 .hero button {
@@ -88,14 +86,14 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s;
 }
 
 .hero button:hover {
     background-color: #40916c;
 }
 
-/* Seção de Pilares (Cards) */
+/* Seção Recursos (Cards) */
 .features {
     padding: 60px 10%;
     text-align: center;
@@ -134,10 +132,48 @@ body {
     color: #1b4332;
 }
 
-/* Container do Quiz */
+/* Galeria de Fotos */
+.gallery-section {
+    padding: 60px 10%;
+    text-align: center;
+    background-color: white;
+}
+
+.gallery-section h2 {
+    color: #1b4332;
+    margin-bottom: 5px;
+}
+
+.gallery-subtitle {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.gallery-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.gallery-img {
+    width: 100%;
+    max-width: 320px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.gallery-img:hover {
+    transform: scale(1.04) translateY(-5px);
+}
+
+/* Quiz Interativo */
 .quiz-section {
     padding: 60px 10%;
-    background-color: white;
     text-align: center;
 }
 
@@ -146,16 +182,10 @@ body {
     margin-bottom: 10px;
 }
 
-.quiz-subtitle {
-    color: #666;
-    margin-bottom: 30px;
-    font-size: 15px;
-}
-
 .quiz-container {
     max-width: 600px;
     margin: 0 auto;
-    background-color: #f4f7f5;
+    background-color: white;
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
@@ -183,7 +213,6 @@ body {
     color: #1b4332;
 }
 
-/* Alternativas de Resposta */
 .quiz-options {
     list-style: none;
     margin-bottom: 20px;
@@ -197,11 +226,11 @@ body {
     display: flex;
     align-items: center;
     padding: 14px;
-    background-color: white;
+    background-color: #f4f7f5;
     border: 2px solid #e0e0e0;
     border-radius: 6px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.2s;
 }
 
 .quiz-options label:hover {
@@ -225,14 +254,13 @@ body {
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s;
 }
 
 .quiz-btn:hover {
     background-color: #40916c;
 }
 
-/* Janela de Resultados */
 .result-screen {
     text-align: center;
     padding: 20px 0;
@@ -251,13 +279,7 @@ body {
     margin-bottom: 10px;
 }
 
-.feedback-text {
-    color: #555;
-    margin-bottom: 25px;
-    line-height: 1.5;
-}
-
-/* Seção de Contato */
+/* Seção Contato */
 .contact {
     background-color: #d8f3dc;
     padding: 60px 10%;
@@ -279,11 +301,6 @@ body {
     border: 1px solid #b7e4c7;
     border-radius: 5px;
     font-size: 16px;
-    outline: none;
-}
-
-#agroForm input:focus {
-    border-color: #52b788;
 }
 
 #agroForm button {
@@ -295,14 +312,9 @@ body {
     font-size: 16px;
     cursor: pointer;
     font-weight: bold;
-    transition: background-color 0.3s ease;
 }
 
-#agroForm button:hover {
-    background-color: #2d6a4f;
-}
-
-/* Rodapé e Redes Sociais */
+/* Rodapé e Botão Flutuante */
 footer {
     background-color: #1b4332;
     color: white;
@@ -311,7 +323,9 @@ footer {
     font-size: 14px;
 }
 
-/* Botão Flutuante do WhatsApp */
+.footer-socials { margin-bottom: 15px; }
+.footer-socials a { color: white; font-size: 20px; margin: 0 10px; }
+
 .whatsapp-btn {
     position: fixed;
     bottom: 20px;
@@ -327,18 +341,11 @@ footer {
     font-size: 30px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     z-index: 9999;
-    text-decoration: none;
-    transition: transform 0.3s ease;
 }
 
-.whatsapp-btn:hover {
-    transform: scale(1.1);
-}
-
-/* Responsividade Básica */
 @media (max-width: 768px) {
     .navbar { flex-direction: column; gap: 15px; }
     .hero h1 { font-size: 32px; }
     .nav-links li { margin: 0 10px; }
-    .quiz-section { padding: 40px 5%; }
+    .gallery-container { gap: 10px; }
 }
