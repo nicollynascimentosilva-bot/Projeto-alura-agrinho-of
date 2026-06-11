@@ -175,6 +175,114 @@ body {
     border: 3px solid #52b788;
 }
 
+/* Quiz Interativo */
+.quiz-section {
+    padding: 60px 10%;
+    text-align: center;
+}
+
+.quiz-section h2 {
+    color: #1b4332;
+    margin-bottom: 10px;
+}
+
+.quiz-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: left;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 5px;
+}
+
+.quiz-question {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #1b4332;
+}
+
+.quiz-options {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.quiz-options li {
+    margin-bottom: 12px;
+}
+
+.quiz-options label {
+    display: flex;
+    align-items: center;
+    padding: 14px;
+    background-color: #f4f7f5;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.quiz-options label:hover {
+    border-color: #52b788;
+    background-color: #f1f9f5;
+}
+
+.quiz-options input {
+    margin-right: 15px;
+    accent-color: #52b788;
+    transform: scale(1.2);
+}
+
+.quiz-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #52b788;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.quiz-btn:hover {
+    background-color: #40916c;
+}
+
+.result-screen {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.result-screen i {
+    font-size: 50px;
+    color: #52b788;
+    margin-bottom: 15px;
+}
+
+.score-text {
+    font-size: 22px;
+    font-weight: bold;
+    color: #1b4332;
+    margin-bottom: 10px;
+}
+
 /* Seção Contato */
 .contact {
     background-color: #d8f3dc;
