@@ -1,4 +1,4 @@
-// 1. Função para rolagem suave ao clicar nas opções do menu
+// 1. Função para rolagem suave ao navegar pelo topo do menu
 function scrollToSection(sectionId) {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -6,18 +6,12 @@ function scrollToSection(sectionId) {
     }
 }
 
-// 2. Manipulação e validação do envio do formulário de contato
+// 2. Manipulação básica do formulário de contato
 const agroForm = document.getElementById('agroForm');
 if (agroForm) {
     agroForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // Impede o envio padrão da página
-        
-        const nome = document.getElementById('nome').value;
-        const email = document.getElementById('email').value;
-        
-        // Mensagem de confirmação na tela
-        alert(`Obrigado pelo contato, ${nome}! Nossa equipe focada em agricultura sustentável responderá em breve no e-mail: ${email}.`);
-        
-        this.reset(); // Limpa os campos do formulário após o envio
+        event.preventDefault();
+        alert('Mensagem enviada com sucesso! Nossa equipe entrará em contato em breve.');
+        this.reset();
     });
 }
