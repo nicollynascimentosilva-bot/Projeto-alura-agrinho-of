@@ -1,3 +1,4 @@
+
 // Função para rolagem suave
 function scrollToSection(sectionId) {
     const section = document.getElementById(sectionId);
@@ -116,5 +117,4 @@ function reiniciarQuiz() {
     carregarPergunta();
 }
 
-// Inicia o quiz após o carregamento da página
 document.addEventListener("DOMContentLoaded", carregarPergunta);
